@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Background Circle -->
+  <circle cx="64" cy="64" r="60" fill="#007ACC" />
+  
+  <!-- Camera Outline -->
+  <rect x="32" y="40" width="64" height="48" rx="6" fill="#ffffff" />
+  
+  <!-- Camera Lens -->
+  <circle cx="64" cy="64" r="16" fill="#1e1e1e" stroke="#ffffff" stroke-width="2" />
+  
+  <!-- Code Bracket Left -->
+  <text x="53" y="68" font-family="Consolas, monospace" font-size="14" fill="#ffffff">{</text>
+  
+  <!-- Code Bracket Right -->
+  <text x="71" y="68" font-family="Consolas, monospace" font-size="14" fill="#ffffff">}</text>
+  
+  <!-- Error Underline -->
+  <path d="M56 72 Q59 74 62 72 Q65 70 68 72 Q71 74 74 72" stroke="#ff5252" stroke-width="2" fill="none" />
+  
+  <!-- Camera Flash -->
+  <rect x="54" y="36" width="20" height="4" rx="2" fill="#ffffff" />
+</svg>
