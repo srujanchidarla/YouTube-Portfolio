@@ -470,7 +470,6 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
 
           {/* Action Items column */}
           <g transform="translate(540, 80)">
-            <rect width="230" height="340" rx="6" fill="#2A3954" />
             <rect width="230" height="40" rx="6" fill="#1F2A40" />
             <text
               x="15"
