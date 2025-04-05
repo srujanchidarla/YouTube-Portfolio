@@ -106,7 +106,7 @@ const Sidebar = ({ isOpen }: SidebarProps): JSX.Element => {
           isOpen ? "w-56" : "w-0 sm:w-20"
         } border-r border-gray-200 dark:border-zinc-700 overflow-hidden`}
       >
-        <div className="h-full overflow-y-auto py-3 px-2">
+        <div className="h-full overflow-y-auto py-3 px-2 scrollbar-hide">
           {/* Main navigation */}
           <div className="mb-4">
             {mainLinks.map((link) => (

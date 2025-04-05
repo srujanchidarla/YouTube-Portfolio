@@ -54,7 +54,7 @@ const Navbar = ({ toggleSidebar }: NavbarProps): JSX.Element => {
 
         {/* Mobile search overlay */}
         {showMobileSearch && (
-          <div className="fixed inset-0 bg-white dark:bg-zinc-900 z-50 p-4 sm:hidden">
+          <div className="fixed inset-0 bg-white dark:bg-zinc-900 z-50 p-4 sm:hidden overflow-y-auto scrollbar-hide">
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setShowMobileSearch(false)}

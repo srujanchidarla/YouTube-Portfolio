@@ -6,7 +6,7 @@ export const categories: Category[] = [
   { id: "mobile", name: "Mobile Apps" },
   { id: "extensions", name: "Browser Extensions" },
   { id: "devtools", name: "Developer Tools" },
-  { id: "project-mgmt", name: "Project Management" },
+
   { id: "full-stack", name: "Full Stack" },
   { id: "frontend", name: "Frontend" },
   { id: "backend", name: "Backend" },
