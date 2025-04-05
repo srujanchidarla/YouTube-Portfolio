@@ -49,7 +49,7 @@ const YouTubeLoading = () => {
       </button>
 
       {/* YouTube logo animation */}
-      <div className="relative mb-10">
+      <div className="text-center flex flex-col items-center justify-center">
         {/* Play button container with pulsing animation */}
         <div className="w-28 h-20 bg-red-600 rounded-2xl flex items-center justify-center animate-pulse">
           {/* Play triangle */}
@@ -57,7 +57,7 @@ const YouTubeLoading = () => {
         </div>
 
         {/* YouTube text */}
-        <div className="mt-3 text-center">
+        <div className="mt-3 mb-3 text-center">
           <h2 className="text-2xl font-bold dark:text-white">
             Srujan Chidarla
           </h2>

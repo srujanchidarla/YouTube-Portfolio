@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import SimpleLoading from "../loading/SimpleLoading";
+import { useLoading } from "../../app/context/LoadingContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,23 +12,16 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const { isLoading } = useLoading();
 
   useEffect(() => {
-    // Check if this is the first time the user is visiting
-    const hasVisitedBefore = localStorage.getItem("sidebarStateSet");
+    // Check sidebar state in localStorage
+    const storedSidebarState = localStorage.getItem("sidebarOpen");
 
-    if (!hasVisitedBefore) {
-      // First visit, keep sidebar closed
-      setSidebarOpen(false);
-      localStorage.setItem("sidebarStateSet", "true");
-    } else {
-      // Subsequent visits, restore previous sidebar state
-      const savedSidebarState = localStorage.getItem("sidebarOpen");
-      setSidebarOpen(savedSidebarState === "true");
+    // If there's a stored state, use it
+    if (storedSidebarState !== null) {
+      setSidebarOpen(storedSidebarState === "true");
     }
-
-    setIsInitialLoad(false);
   }, []);
 
   const toggleSidebar = () => {
@@ -35,8 +30,8 @@ const Layout = ({ children }: LayoutProps) => {
     localStorage.setItem("sidebarOpen", newState.toString());
   };
 
-  if (isInitialLoad) {
-    return null; // Prevent flash of incorrect state
+  if (isLoading) {
+    return <SimpleLoading />;
   }
 
   return (
