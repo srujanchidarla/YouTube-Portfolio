@@ -24,6 +24,7 @@ export interface Video {
   implementation?: string;
   conclusion?: string;
   realTimeUseCases?: string[];
+  link?: string;
 }
 
 export interface Category {

@@ -21,6 +21,7 @@ interface VideoPlayerContentProps {
     description: string;
     category?: string;
     projectUrl?: string;
+    link?: string;
     techStack?: string[];
   };
   extendedContent?: React.ReactNode;
