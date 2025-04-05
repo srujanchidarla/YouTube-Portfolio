@@ -128,7 +128,7 @@ const VideoPlayerContent: React.FC<VideoPlayerContentProps> = ({
       document.removeEventListener("keydown", handleKeyPress);
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
-  });
+  }, []);
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
