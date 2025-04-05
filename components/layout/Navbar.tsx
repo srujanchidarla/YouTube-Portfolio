@@ -10,6 +10,7 @@ import {
   UserCircleIcon,
   VideoCameraIcon,
   EnvelopeIcon,
+  ChartBarIcon,
 } from "@heroicons/react/24/outline";
 import SearchBar from "../ui/SearchBar";
 import ContactModal from "../ui/ContactModal";
@@ -91,6 +92,15 @@ const Navbar = ({ toggleSidebar }: NavbarProps): JSX.Element => {
           >
             <MagnifyingGlassIcon className="h-6 w-6 text-gray-700 dark:text-white" />
           </button>
+
+          {/* Analytics Button */}
+          <Link
+            href="/category/analytics"
+            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800"
+            aria-label="Analytics & Skills"
+          >
+            <ChartBarIcon className="h-6 w-6 text-green-600 dark:text-green-400" />
+          </Link>
 
           {/* Contact Button */}
           <button

@@ -211,7 +211,8 @@ export default function VideoPage() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    router.push("/");
+  }, [router]);
 
   // Redirect numeric IDs to project name routes
   useEffect(() => {

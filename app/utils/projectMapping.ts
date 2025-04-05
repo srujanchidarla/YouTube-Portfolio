@@ -1,6 +1,6 @@
 // utils/projectMapping.ts
 
-// Map from numeric IDs to project name IDs
+// Export these as named exports, not default exports
 export const numericToProjectId: Record<string, string> = {
   "1": "weatherwise",
   "2": "jobfinder",
@@ -39,17 +39,5 @@ export const normalizeProjectId = (id: string): string => {
   return id;
 };
 
-// Function to check if a route ID is a valid project ID
-export const isValidProjectId = (id: string): boolean => {
-  // Check if it's directly a project ID
-  if (Object.keys(projectIdToDisplayName).includes(id.toLowerCase())) {
-    return true;
-  }
-
-  // Check if it's a numeric ID that maps to a project ID
-  if (numericToProjectId[id]) {
-    return true;
-  }
-
-  return false;
-};
+// Note: We're removing the isValidProjectId function as it was unused and
+// likely caused the duplicate declaration issue

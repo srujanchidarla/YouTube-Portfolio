@@ -6,6 +6,7 @@ import "./globals.css";
 import Layout from "../components/layout/Layout";
 import YouTubeLoading from "../components/loading/YouTubeLoading";
 import { LoadingProvider, useLoading } from "./context/LoadingContext";
+import { ToastProvider } from "../components/ui/ToastProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +38,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <LoadingProvider>
-          <AppContent>{children}</AppContent>
+          <ToastProvider>
+            <AppContent>{children}</AppContent>
+          </ToastProvider>
         </LoadingProvider>
       </body>
     </html>

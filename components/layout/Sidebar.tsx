@@ -14,7 +14,7 @@ import {
   TrophyIcon,
   DocumentTextIcon,
   DevicePhoneMobileIcon,
-  CommandLineIcon,
+  ChartBarIcon,
 } from "@heroicons/react/24/outline";
 import { JSX } from "react";
 import ContactModal from "../ui/ContactModal";
@@ -71,6 +71,11 @@ const Sidebar = ({ isOpen }: SidebarProps): JSX.Element => {
 
   const categoriesLinks: NavLink[] = [
     {
+      name: "Analytics & Skills",
+      icon: <ChartBarIcon className="h-6 w-6" />,
+      href: "/category/analytics",
+    },
+    {
       name: "Web Development",
       icon: <CodeBracketIcon className="h-6 w-6" />,
       href: "/category/web",
@@ -79,11 +84,6 @@ const Sidebar = ({ isOpen }: SidebarProps): JSX.Element => {
       name: "Mobile Apps",
       icon: <DevicePhoneMobileIcon className="h-6 w-6" />,
       href: "/category/mobile",
-    },
-    {
-      name: "Developer Tools",
-      icon: <CommandLineIcon className="h-6 w-6" />,
-      href: "/category/devtools",
     },
     {
       name: "Blog",
@@ -140,7 +140,7 @@ const Sidebar = ({ isOpen }: SidebarProps): JSX.Element => {
                 !isOpen && "sm:hidden"
               }`}
             >
-              PROJECT CATEGORIES
+              PROJECT SHOWCASE
             </h3>
             {categoriesLinks.map((link) => (
               <Link
