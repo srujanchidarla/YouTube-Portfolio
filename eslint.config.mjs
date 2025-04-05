@@ -14,3 +14,17 @@ const eslintConfig = [
 ];
 
 export default eslintConfig;
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  typescript: {
+    // Disable type checking during build if you're having persistent issues
+    // ignoreBuildErrors: true,
+  },
+  eslint: {
+    // Disable ESLint during build if you're having persistent issues
+    // ignoreDuringBuilds: true,
+  },
+  // Add any other specific configurations
+};
+
+export default nextConfig;
