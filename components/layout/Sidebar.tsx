@@ -16,21 +16,21 @@ import {
   DevicePhoneMobileIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/outline";
-import { JSX } from "react";
 import ContactModal from "../ui/ContactModal";
 
 interface SidebarProps {
   isOpen: boolean;
+  toggleSidebar: () => void;
 }
 
 interface NavLink {
   name: string;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   href: string;
   isContact?: boolean;
 }
 
-const Sidebar = ({ isOpen }: SidebarProps): JSX.Element => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const [showContactModal, setShowContactModal] = useState(false);
 
   const mainLinks: NavLink[] = [
@@ -96,18 +96,24 @@ const Sidebar = ({ isOpen }: SidebarProps): JSX.Element => {
     if (link.isContact) {
       e.preventDefault();
       setShowContactModal(true);
+    } else if (typeof window !== "undefined" && window.innerWidth < 640) {
+      toggleSidebar();
     }
   };
 
   return (
     <>
       <aside
-        className={`fixed left-0 top-14 bottom-0 bg-white dark:bg-zinc-900 z-40 transition-all duration-300 ${
-          isOpen ? "w-56" : "w-0 sm:w-20"
-        } border-r border-gray-200 dark:border-zinc-700 overflow-hidden`}
+        className={`
+          fixed left-0 top-14 bottom-0 bg-white dark:bg-zinc-900 
+          z-40 transition-all duration-300 ease-in-out
+          border-r border-gray-200 dark:border-zinc-700 
+          overflow-hidden
+          ${isOpen ? "w-56 sm:w-56" : "w-0 sm:w-20"}
+        `}
       >
         <div className="h-full overflow-y-auto py-3 px-2 scrollbar-hide">
-          {/* Main navigation */}
+          {/* Main Navigation */}
           <div className="mb-4">
             {mainLinks.map((link) => (
               <Link
@@ -120,9 +126,10 @@ const Sidebar = ({ isOpen }: SidebarProps): JSX.Element => {
                   {link.icon}
                 </div>
                 <span
-                  className={`text-sm font-medium dark:text-white ${
-                    !isOpen && "sm:hidden"
-                  }`}
+                  className={`
+                    text-sm font-medium dark:text-white 
+                    ${!isOpen ? "hidden sm:hidden" : ""}
+                  `}
                 >
                   {link.name}
                 </span>
@@ -136,9 +143,11 @@ const Sidebar = ({ isOpen }: SidebarProps): JSX.Element => {
           {/* Categories */}
           <div className="mt-4">
             <h3
-              className={`text-sm font-semibold text-gray-500 dark:text-gray-400 px-3 mb-2 ${
-                !isOpen && "sm:hidden"
-              }`}
+              className={`
+                text-sm font-semibold text-gray-500 dark:text-gray-400 
+                px-3 mb-2 
+                ${!isOpen ? "hidden sm:hidden" : ""}
+              `}
             >
               PROJECT SHOWCASE
             </h3>
@@ -147,14 +156,23 @@ const Sidebar = ({ isOpen }: SidebarProps): JSX.Element => {
                 key={link.name}
                 href={link.href}
                 className="flex items-center gap-4 p-3 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-lg mb-1"
+                onClick={() => {
+                  if (
+                    typeof window !== "undefined" &&
+                    window.innerWidth < 640
+                  ) {
+                    toggleSidebar();
+                  }
+                }}
               >
                 <div className="text-gray-600 dark:text-gray-300">
                   {link.icon}
                 </div>
                 <span
-                  className={`text-sm font-medium dark:text-white ${
-                    !isOpen && "sm:hidden"
-                  }`}
+                  className={`
+                    text-sm font-medium dark:text-white 
+                    ${!isOpen ? "hidden sm:hidden" : ""}
+                  `}
                 >
                   {link.name}
                 </span>
