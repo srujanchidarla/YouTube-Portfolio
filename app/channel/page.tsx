@@ -6,13 +6,13 @@ import { useSearchParams } from "next/navigation";
 import VideoGrid from "../../components/sections/VideoGrid";
 import { videos } from "../../data/videos";
 import { categories } from "../../data/Categories";
+import Image from "next/image";
 
 // For a real app, you would fetch this from an API or database
 const channelInfo = {
   name: "Srujan Chidarla",
-  avatar: "/profile.jpg",
+  avatar: "/profile.png",
   banner: "/thumbnails/channel-banner.jpg",
-  subscribers: 1650,
   description: `As a Software Engineer, I specialize in transforming complex ideas into intuitive, user-centered digital experiences. Proficient in JavaScript, ReactJS, AngularJS, NodeJS, Java, and Spring Boot, I create tools that enhance team collaboration and drive user engagement. 
 
 At Cognizant, I designed an Agile Retro Tool integrated with Azure DevOps, boosting team alignment, and led a hardware testing automation project that raised efficiency by 15%. 
@@ -22,8 +22,8 @@ Beyond my professional roles, I developed JobFinder, a responsive job platform w
 I'm always open to connecting on innovative tech projects that make an impact.`,
   links: [
     { name: "GitHub", url: "https://github.com/srujanchidarla" },
-    { name: "LinkedIn", url: "https://linkedin.com/in/srujanchidarla" },
-    { name: "Portfolio", url: "https://srujan.tech" },
+    { name: "LinkedIn", url: "https://linkedin.com/in/srujan-chidarla" },
+    { name: "Portfolio", url: "https://srujanchidarla.com" },
     { name: "Email", url: "mailto:srujanchidarla99@gmail.com" },
   ],
   joinDate: "Aug 2021",
@@ -113,73 +113,97 @@ const education = [
   },
 ];
 
-// Certifications data
 const certifications = [
   {
     name: "Learning Next.js",
-    issuer: "LinkedIn",
+    issuer: "LinkedIn Learning",
     date: "Feb 2025",
     credential: "next-js-credential",
+    link: "https://www.linkedin.com/learning/certificates/16d95599e8307a5644a5cb529a55dd4c5f46bf0f441d4606373f2e3d51fcb070",
   },
   {
     name: "Become a React Native Developer",
-    issuer: "LinkedIn",
+    issuer: "LinkedIn Learning",
     date: "Dec 2024",
     credential: "react-native-credential",
+    link: "https://www.linkedin.com/learning/certificates/e23e9e1e55d46fe5f98aea7222b41254bd25a5a09f7568dbaf0147aaa509ca21",
   },
   {
-    name: "Postman Essential Training",
-    issuer: "LinkedIn",
-    date: "Dec 2024",
-    credential: "postman-credential",
+    name: "Problem Solving",
+    issuer: "HackerRank",
+    date: "2024",
+    credential: "problem-solving-certificate",
+    link: "https://www.hackerrank.com/certificates/B5F731D6723F",
   },
   {
     name: "Angular",
     issuer: "Udemy",
     date: "Dec 2022",
     credential: "angular-credential",
+    link: "https://www.udemy.com/certificate/UC-1cc71a5a-564e-4b2a-b113-c53846beaa26/",
   },
   {
     name: "Modern Java Certified",
     issuer: "Udemy",
     date: "Dec 2022",
     credential: "java-credential",
+    link: "https://www.udemy.com/certificate/UC-aa417410-414c-46b9-9fc6-15b470231598/",
   },
   {
     name: "ReactJs Certified",
     issuer: "Udemy",
     date: "Sep 2022",
     credential: "reactjs-credential",
+    link: "https://www.udemy.com/certificate/UC-fbebd109-4b1d-4c2d-bfb9-bc6591cdff3b/",
   },
   {
     name: "Javascript Certified",
     issuer: "Udemy",
     date: "Mar 2022",
     credential: "javascript-credential",
+    link: "https://www.udemy.com/certificate/UC-4341f4c5-a492-4bc7-a07b-f68adca8dc62/",
   },
   {
     name: "Git Certified",
     issuer: "Udemy",
     date: "Feb 2022",
     credential: "git-credential",
+    link: "https://www.udemy.com/certificate/UC-08f71976-34d3-4e31-8636-0532d8e410fb/",
   },
   {
     name: "MySQL Certified",
     issuer: "Udemy",
     date: "Feb 2022",
     credential: "mysql-credential",
+    link: "https://www.udemy.com/certificate/UC-3d1718bd-9f9a-496c-951c-7c82239ade58/",
   },
   {
     name: "Bootstrap Certified",
     issuer: "Udemy",
     date: "Jan 2022",
     credential: "bootstrap-credential",
+    link: "https://www.udemy.com/certificate/UC-1d7865c0-c0e4-4b87-87af-e3671a9a669a/",
   },
   {
     name: "HTML & CSS Certified",
     issuer: "Udemy",
     date: "Jan 2022",
     credential: "html-css-credential",
+    link: "https://www.udemy.com/certificate/UC-022d90a8-ecb2-46a2-b106-03120da985ce/",
+  },
+  {
+    name: "Google Cloud Migration Summit",
+    issuer: "Google Cloud Skills Boost",
+    date: "2022",
+    credential: "cloud-migration-summit",
+    link: "https://www.cloudskillsboost.google/public_profiles/5ca56fd1-bc83-4de6-bd55-b008de267d8d",
+  },
+  {
+    name: "Programming in C",
+    issuer: "SSSIT COMPUTER EDUCATION",
+    date: "2022",
+    credential: "c-programming-certificate",
+    link: "", // No official link provided
   },
 ];
 
@@ -221,6 +245,51 @@ export default function ChannelPage() {
   const tabParam = searchParams.get("tab");
   const [activeTab, setActiveTab] = useState<string>(tabParam || "projects");
   const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
+  const [subscriberCount, setSubscriberCount] = useState<number>(0);
+
+  // Get subscription status and count from localStorage
+  useEffect(() => {
+    const channelName = channelInfo.name;
+
+    // Check if user is subscribed
+    const subscriptionsJson = localStorage.getItem("srujan_tube_subscriptions");
+    if (subscriptionsJson) {
+      const subscriptions = JSON.parse(subscriptionsJson);
+      setIsSubscribed(subscriptions[channelName] || false);
+    }
+
+    // Count total subscribers across all videos
+    let totalSubscribers = 0;
+
+    // If this channel is subscribed
+    if (isSubscribed) {
+      totalSubscribers = 1;
+    }
+
+    setSubscriberCount(totalSubscribers);
+  }, [isSubscribed]);
+
+  // Handle subscription toggle
+  const handleSubscribe = () => {
+    const channelName = channelInfo.name;
+    const subscriptionsJson = localStorage.getItem("srujan_tube_subscriptions");
+    const subscriptions = subscriptionsJson
+      ? JSON.parse(subscriptionsJson)
+      : {};
+
+    // Toggle subscription status
+    const newStatus = !isSubscribed;
+    subscriptions[channelName] = newStatus;
+
+    // Save to localStorage
+    localStorage.setItem(
+      "srujan_tube_subscriptions",
+      JSON.stringify(subscriptions)
+    );
+
+    // Update state
+    setIsSubscribed(newStatus);
+  };
 
   // Update active tab when URL param changes
   useEffect(() => {
@@ -241,13 +310,16 @@ export default function ChannelPage() {
 
   return (
     <div className="min-h-screen pb-10">
-      {/* Channel banner */}
-      <div className="relative w-full h-40 sm:h-56 bg-gray-200 dark:bg-zinc-800 overflow-hidden">
+      {" "}
+      {/* Added mt-14 to account for fixed navbar */}
+      {/* Channel banner with reduced height */}
+      <div className="relative w-full h-32 sm:h-40 bg-gray-200 dark:bg-zinc-800 overflow-hidden">
         {/* Inline SVG banner */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 300"
-          className="absolute w-full h-full"
+          className="absolute inset-0 w-full h-full object-cover"
+          preserveAspectRatio="xMidYMid slice"
         >
           <defs>
             <linearGradient
@@ -335,9 +407,9 @@ export default function ChannelPage() {
           {/* Name */}
           <text
             x="600"
-            y="180"
+            y="160"
             fontFamily="Arial, sans-serif"
-            fontSize="48"
+            fontSize="36"
             fontWeight="bold"
             fill="#FFFFFF"
             textAnchor="middle"
@@ -348,9 +420,9 @@ export default function ChannelPage() {
           {/* Tagline */}
           <text
             x="600"
-            y="230"
+            y="200"
             fontFamily="Arial, sans-serif"
-            fontSize="24"
+            fontSize="20"
             fill="#E0E7FF"
             textAnchor="middle"
           >
@@ -358,56 +430,18 @@ export default function ChannelPage() {
           </text>
         </svg>
       </div>
-
       {/* Channel info */}
-      <div className="px-4 md:px-8 -mt-14 relative z-10">
+      <div className="px-4 md:px-8 -mt-12 relative z-10">
         <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 mb-6">
           {/* Channel avatar */}
-          {/* Channel avatar */}
-          <div className="h-24 w-24 rounded-full overflow-hidden border-4 border-white dark:border-zinc-900 bg-gray-200 dark:bg-zinc-800">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 200 200"
-              className="w-full h-full"
-            >
-              <defs>
-                <linearGradient
-                  id="avatarGradient"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="100%"
-                >
-                  <stop offset="0%" stopColor="#3B82F6" />
-                  <stop offset="100%" stopColor="#1E40AF" />
-                </linearGradient>
-              </defs>
-
-              {/* Background */}
-              <circle cx="100" cy="100" r="100" fill="url(#avatarGradient)" />
-
-              {/* Simple profile silhouette */}
-              <g transform="translate(40, 40)">
-                {/* Head */}
-                <circle cx="60" cy="45" r="40" fill="#FFFFFF" />
-
-                {/* Body */}
-                <path d="M20,160 C20,100 100,100 100,160" fill="#FFFFFF" />
-
-                {/* Initial */}
-                <text
-                  x="60"
-                  y="65"
-                  fontFamily="Arial, sans-serif"
-                  fontSize="50"
-                  fontWeight="bold"
-                  fill="#3B82F6"
-                  textAnchor="middle"
-                >
-                  S
-                </text>
-              </g>
-            </svg>
+          <div className="h-24 w-24 mb-2 rounded-full overflow-hidden border-4 border-white dark:border-zinc-900 bg-gray-200 dark:bg-zinc-800">
+            <Image
+              width={96}
+              height={96}
+              src={channelInfo.avatar}
+              alt="Channel Avatar"
+              className="h-full w-full object-cover"
+            />
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-4">
@@ -416,13 +450,13 @@ export default function ChannelPage() {
                 {channelInfo.name}
               </h1>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                {formatSubscriberCount(channelInfo.subscribers)} subscribers •
-                Joined {channelInfo.joinDate}
+                {formatSubscriberCount(subscriberCount)} subscribers • Joined{" "}
+                {channelInfo.joinDate}
               </p>
             </div>
 
             <button
-              onClick={() => setIsSubscribed(!isSubscribed)}
+              onClick={handleSubscribe}
               className={`px-6 py-2.5 rounded-full text-sm font-medium ${
                 isSubscribed
                   ? "bg-gray-200 dark:bg-zinc-700 text-gray-800 dark:text-gray-200"
@@ -599,18 +633,46 @@ export default function ChannelPage() {
                 {certifications.map((cert, index) => (
                   <div
                     key={index}
-                    className="bg-gray-100 dark:bg-zinc-800 rounded-lg p-4 flex flex-col"
+                    className="bg-gray-100 dark:bg-zinc-800 rounded-lg p-4 flex flex-col relative"
                   >
-                    <h3 className="text-md font-semibold dark:text-white">
-                      {cert.name}
-                    </h3>
-                    <div className="flex items-center justify-between mt-1">
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {cert.issuer}
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-500">
-                        {cert.date}
-                      </p>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="text-md font-semibold dark:text-white pr-8">
+                          {cert.name}
+                        </h3>
+                        <div className="flex items-center justify-between mt-1">
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            {cert.issuer}
+                          </p>
+                          <p className="text-xs text-gray-500 dark:text-gray-500 ml-2">
+                            {cert.date}
+                          </p>
+                        </div>
+                      </div>
+                      {cert.link && (
+                        <a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute top-4 right-4 text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                          title="View Certificate"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                            />
+                          </svg>
+                        </a>
+                      )}
                     </div>
                   </div>
                 ))}

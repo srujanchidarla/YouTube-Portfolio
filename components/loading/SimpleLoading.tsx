@@ -1,4 +1,4 @@
-// components/loading/SimpleLoading.jsx
+// components/loading/SimpleLoading.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,6 +8,15 @@ export default function SimpleLoading() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    // Check if the loading screen has been shown before
+    const hasLoadedBefore = localStorage.getItem("firstLoadComplete");
+
+    // If it has been shown before, immediately hide the loading screen
+    if (hasLoadedBefore) {
+      setVisible(false);
+      return;
+    }
+
     // Simulate loading progress
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -19,9 +28,10 @@ export default function SimpleLoading() {
       });
     }, 100);
 
-    // Hide after animation completes
+    // Hide after animation completes and mark as loaded
     const timer = setTimeout(() => {
       setVisible(false);
+      localStorage.setItem("firstLoadComplete", "true");
     }, 2000);
 
     return () => {
@@ -42,7 +52,7 @@ export default function SimpleLoading() {
 
       {/* YouTube text */}
       <div className="mt-3 mb-8 text-center">
-        <h1 className="text-2xl font-bold dark:text-white">SrujanTube</h1>
+        <h1 className="text-2xl font-bold dark:text-white">Srujan Chidarla</h1>
       </div>
 
       {/* Progress bar */}

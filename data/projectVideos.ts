@@ -9,11 +9,12 @@ export const projectVideos: Video[] = [
 
 Project Motivation:
 In an era of increasing climate variability, access to accurate, real-time weather information is more crucial than ever. WeatherWise was conceived to bridge the gap between complex meteorological data and user-friendly visualization.`,
-    views: 5623,
+    views: 0,
     createdAt: "2023-09-15T10:30:00Z",
     channelName: "Srujan Chidarla",
-    subscribers: 1245,
+    subscribers: 0,
     projectUrl: "https://github.com/srujanchidarla/weatherwise",
+    link: "https://weatherwise.online/",
     category: "Web Application",
     techStack: [
       "ReactJS",
@@ -24,7 +25,7 @@ In an era of increasing climate variability, access to accurate, real-time weath
       "Docker",
       "AWS",
     ],
-    likes: 342,
+    likes: 0,
     features: [
       "Real-Time Weather and Forecast",
       "Interactive Geolocation Mapping",
@@ -76,6 +77,7 @@ In today's dynamic job market, finding the right opportunity can be challenging.
     channelName: "Srujan Chidarla",
     subscribers: 987,
     projectUrl: "https://github.com/srujanchidarla/jobfinder",
+    link: "https://job-finder-pink-mu.vercel.app/",
     category: "Web Application",
     techStack: [
       "React",
@@ -87,7 +89,7 @@ In today's dynamic job market, finding the right opportunity can be challenging.
       "Express",
       "Vercel",
     ],
-    likes: 289,
+    likes: 0,
     features: [
       "Advanced Job Filtering",
       "Real-Time Job Listings",
@@ -137,10 +139,11 @@ The extension provides instant, accurate measurements by simply hovering over el
     createdAt: "2023-04-05T08:15:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 1245,
-    projectUrl: "https://github.com/srujanchidarla/pixelpeek",
+    projectUrl: "https://pixelpeek.site/",
+    link: "https://chromewebstore.google.com/detail/pixelpeek/ffdgajgkgcjecfimkhpaopkhfoekjhnb",
     category: "Browser Extension",
     techStack: ["JavaScript", "HTML5", "CSS3", "Chrome Extensions API"],
-    likes: 156,
+    likes: 0,
     features: [
       "Real-time pixel dimensions display",
       "Works with images, videos, iframes, and more",
@@ -190,8 +193,8 @@ Unlike standard code screenshot tools that only capture plain text with basic st
     createdAt: "2022-04-15T09:25:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 1245,
-    projectUrl:
-      "https://marketplace.visualstudio.com/items?itemName=srujanchidarla.truescreenshot",
+    projectUrl: "https://github.com/srujanchidarla/True-Screenshot",
+    link: "https://marketplace.visualstudio.com/items?itemName=srujanchidarla.truescreenshot",
     category: "Developer Tools",
     techStack: [
       "TypeScript",
@@ -200,7 +203,7 @@ Unlike standard code screenshot tools that only capture plain text with basic st
       "Node.js",
       "Webpack",
     ],
-    likes: 124,
+    likes: 0,
     features: [
       "Captures true visual representation including error underlines and warnings",
       "Supports long screenshots for extensive code selections",
@@ -251,6 +254,7 @@ The tool provides customizable templates for different retrospective formats, re
     channelName: "Srujan Chidarla",
     subscribers: 1245,
     projectUrl: "https://github.com/srujanchidarla/agile-retro",
+    link: "#/channel?tab=projects",
     category: "Project Management",
     techStack: [
       "Angular",
@@ -261,7 +265,7 @@ The tool provides customizable templates for different retrospective formats, re
       "Docker",
       "AWS",
     ],
-    likes: 178,
+    likes: 0,
     features: [
       "Real-time collaboration board",
       "Multiple retrospective templates",
@@ -313,7 +317,8 @@ Designed with scalability in mind, the system supports both small businesses and
     createdAt: "2021-01-10T11:20:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 1245,
-    projectUrl: "https://github.com/srujanchidarla/ecommerce-platform",
+    projectUrl: "https://github.com/srujanchidarla/M.R.P.F",
+    link: "https://ecommerce-platform.com/",
     category: "Web Development",
     techStack: [
       "MongoDB",
@@ -325,7 +330,7 @@ Designed with scalability in mind, the system supports both small businesses and
       "JWT",
       "AWS S3",
     ],
-    likes: 215,
+    likes: 0,
     features: [
       "Product catalog with categories and search",
       "User authentication and profiles",
@@ -382,6 +387,8 @@ With built-in templates, custom fields, and cloud synchronization, users can mai
     channelName: "Srujan Chidarla",
     subscribers: 1245,
     projectUrl: "https://github.com/srujanchidarla/make-receipt",
+    link: "https://play.google.com/store/apps/details?id=com.makeareceipt",
+
     category: "Mobile Apps",
     techStack: [
       "React Native",
@@ -391,7 +398,7 @@ With built-in templates, custom fields, and cloud synchronization, users can mai
       "Firebase Auth",
       "Expo",
     ],
-    likes: 87,
+    likes: 0,
     features: [
       "Digital receipt creation with customizable templates",
       "Receipt scanning and data extraction",
@@ -446,10 +453,11 @@ Built with vanilla JavaScript, HTML5, and CSS3, the Interactive To-Do List demon
     createdAt: "2020-01-25T09:30:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 1245,
-    projectUrl: "https://github.com/srujanchidarla/interactive-todo",
+    projectUrl: "https://github.com/srujanchidarla/Todo",
+    link: "https://interactive-todo.com/",
     category: "Web Development",
     techStack: ["HTML5", "CSS3", "JavaScript", "LocalStorage API"],
-    likes: 76,
+    likes: 0,
     features: [
       "Task creation with due dates",
       "Priority levels (Low, Medium, High)",

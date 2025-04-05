@@ -1,17 +1,75 @@
 // components/ui/ProjectThumbnail.tsx
+"use client";
 import React from "react";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 interface ProjectThumbnailProps {
   projectId: string;
   title: string;
   category?: string;
+  videoUrl?: string;
+  imageUrl?: string;
 }
 
 const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
   projectId,
   title,
   category,
+  videoUrl,
+  imageUrl,
 }) => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  useEffect(() => {
+    setIsVideoPlaying(false);
+  }, [videoUrl, projectId]);
+
+  const handleThumbnailClick = () => {
+    if (videoUrl) {
+      setIsVideoPlaying(true);
+    }
+  };
+
+  // If video is playing, show the video player
+  if (videoUrl && isVideoPlaying) {
+    return (
+      <video
+        src={videoUrl}
+        controls
+        autoPlay
+        className="w-full h-full object-cover"
+        onError={() => setIsVideoPlaying(false)}
+      >
+        Your browser does not support the video tag.
+      </video>
+    );
+  }
+
+  // If custom image is available, show that with play button overlay if there's a video
+  if (imageUrl) {
+    return (
+      <div
+        className="w-full h-full relative cursor-pointer"
+        onClick={handleThumbnailClick}
+      >
+        <Image
+          src={imageUrl}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        {videoUrl && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 bg-black/60 rounded-full flex items-center justify-center">
+              <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-white ml-1"></div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
   // Select SVG based on projectId
   switch (projectId) {
     case "1": // WeatherWise
@@ -128,6 +186,12 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               Real-Time Weather Tracking
             </text>
           </g>
+          {videoUrl && (
+            <g>
+              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+            </g>
+          )}
         </svg>
       );
 
@@ -216,6 +280,12 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               UX/UI Designer
             </text>
           </g>
+          {videoUrl && (
+            <g>
+              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+            </g>
+          )}
         </svg>
       );
 
@@ -300,6 +370,12 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               Chrome Extension for Media Dimensions
             </text>
           </g>
+          {videoUrl && (
+            <g>
+              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+            </g>
+          )}
         </svg>
       );
 
@@ -395,6 +471,12 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               VS Code Extension for Accurate Code Screenshots
             </text>
           </g>
+          {videoUrl && (
+            <g>
+              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+            </g>
+          )}
         </svg>
       );
 
@@ -482,6 +564,12 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               Action Items
             </text>
           </g>
+          {videoUrl && (
+            <g>
+              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+            </g>
+          )}
         </svg>
       );
 
@@ -526,7 +614,7 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
           {/* Product 1 */}
           <g transform="translate(50, 140)">
             <rect width="220" height="260" rx="10" fill="white" />
-            <rect width="220" height="150" fill="#E5E7EB" rx="10 10 0 0" />
+            <rect width="220" height="150" fill="#E5E7EB" rx="10" />
             <text
               x="20"
               y="180"
@@ -552,7 +640,7 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
           {/* Product 2 */}
           <g transform="translate(290, 140)">
             <rect width="220" height="260" rx="10" fill="white" />
-            <rect width="220" height="150" fill="#E5E7EB" rx="10 10 0 0" />
+            <rect width="220" height="150" fill="#E5E7EB" rx="10" />
             <text
               x="20"
               y="180"
@@ -578,7 +666,7 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
           {/* Product 3 */}
           <g transform="translate(530, 140)">
             <rect width="220" height="260" rx="10" fill="white" />
-            <rect width="220" height="150" fill="#E5E7EB" rx="10 10 0 0" />
+            <rect width="220" height="150" fill="#E5E7EB" rx="10" />
             <text
               x="20"
               y="180"
@@ -600,6 +688,12 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               $299.95
             </text>
           </g>
+          {videoUrl && (
+            <g>
+              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+            </g>
+          )}
         </svg>
       );
 
@@ -645,7 +739,7 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               y="10"
               width="320"
               height="80"
-              rx="30 30 0 0"
+              rx="30"
               fill="#4338CA"
             />
             <text
@@ -705,6 +799,12 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               Make a Receipt
             </text>
           </g>
+          {videoUrl && (
+            <g>
+              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+            </g>
+          )}
         </svg>
       );
 
@@ -736,14 +836,7 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
           <rect x="150" y="50" width="500" height="350" rx="10" fill="white" />
 
           {/* App header */}
-          <rect
-            x="150"
-            y="50"
-            width="500"
-            height="70"
-            rx="10 10 0 0"
-            fill="#8B5CF6"
-          />
+          <rect x="150" y="50" width="500" height="70" rx="10" fill="#8B5CF6" />
           <text
             x="400"
             y="95"
@@ -857,6 +950,12 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               Due tomorrow
             </text>
           </g>
+          {videoUrl && (
+            <g>
+              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+            </g>
+          )}
         </svg>
       );
 
@@ -903,6 +1002,12 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
             >
               {category}
             </text>
+          )}
+          {videoUrl && (
+            <g>
+              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+            </g>
           )}
         </svg>
       );

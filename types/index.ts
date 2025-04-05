@@ -4,6 +4,8 @@ export interface Video {
   id: string;
   title: string;
   thumbnail?: string;
+  imageUrl?: string;
+  videoUrl?: string;
   description?: string;
   views: number;
   likes?: number;
