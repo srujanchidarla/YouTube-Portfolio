@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
@@ -9,11 +9,35 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  useEffect(() => {
+    // Check if this is the first time the user is visiting
+    const hasVisitedBefore = localStorage.getItem("sidebarStateSet");
+
+    if (!hasVisitedBefore) {
+      // First visit, keep sidebar closed
+      setSidebarOpen(false);
+      localStorage.setItem("sidebarStateSet", "true");
+    } else {
+      // Subsequent visits, restore previous sidebar state
+      const savedSidebarState = localStorage.getItem("sidebarOpen");
+      setSidebarOpen(savedSidebarState === "true");
+    }
+
+    setIsInitialLoad(false);
+  }, []);
 
   const toggleSidebar = () => {
-    setSidebarOpen((prev) => !prev);
+    const newState = !sidebarOpen;
+    setSidebarOpen(newState);
+    localStorage.setItem("sidebarOpen", newState.toString());
   };
+
+  if (isInitialLoad) {
+    return null; // Prevent flash of incorrect state
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-zinc-950">
