@@ -104,7 +104,6 @@ const VideoPlayerContent: React.FC<VideoPlayerContentProps> = ({
     };
   }, [isPlaying, duration]);
 
-  // Handle fullscreen
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === "f" || e.key === "F") {
@@ -129,7 +128,7 @@ const VideoPlayerContent: React.FC<VideoPlayerContentProps> = ({
       document.removeEventListener("keydown", handleKeyPress);
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
-  }, []);
+  });
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
