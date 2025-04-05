@@ -58,7 +58,9 @@ const YouTubeLoading = () => {
 
         {/* YouTube text */}
         <div className="mt-3 text-center">
-          <h2 className="text-2xl font-bold dark:text-white">SrujanTube</h2>
+          <h2 className="text-2xl font-bold dark:text-white">
+            Srujan Chidarla
+          </h2>
         </div>
       </div>
 
