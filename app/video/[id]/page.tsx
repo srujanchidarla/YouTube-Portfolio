@@ -25,164 +25,164 @@ import { useReactions } from "../../../hooks/useReactions";
 import ShareMenu from "../../../components/ui/ShareMenu";
 import VideoPlayerHeader from "../../../components/sections/VideoPlayerHeader";
 
-// Simple placeholder component to replace the problematic ProjectContentProvider
-const ProjectDetails = ({ projectId }: { projectId: string }) => {
-  // Normalize the project ID to make sure we're using the project name format
-  const normalizedId = normalizeProjectId(projectId);
-  const project = projectVideos.find((p) => p.id === normalizedId);
+export default function VideoPage() {
+  // Simple placeholder component to replace the problematic ProjectContentProvider
+  const ProjectDetails = ({ projectId }: { projectId: string }) => {
+    // Normalize the project ID to make sure we're using the project name format
+    const normalizedId = normalizeProjectId(projectId);
+    const project = projectVideos.find((p) => p.id === normalizedId);
 
-  if (!project) return null;
+    if (!project) return null;
 
-  // Get the display name using our utility function
-  const projectName = getProjectDisplayName(normalizedId);
+    // Get the display name using our utility function
+    const projectName = getProjectDisplayName(normalizedId);
 
-  return (
-    <div className="bg-white dark:bg-zinc-800 rounded-lg shadow-sm overflow-hidden p-6 space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold mb-4 dark:text-white">
-          {projectName}
-        </h2>
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
-          {project.description}
-        </p>
-      </div>
-
-      {/* Tech Stack */}
-      {project.techStack && project.techStack.length > 0 && (
+    return (
+      <div className="bg-white dark:bg-zinc-800 rounded-lg shadow-sm overflow-hidden p-6 space-y-6">
         <div>
-          <h3 className="text-xl font-semibold mb-3 dark:text-white">
-            Tech Stack
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {project.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-full text-xs"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Features */}
-      {project.features && project.features.length > 0 && (
-        <div>
-          <h3 className="text-xl font-semibold mb-3 dark:text-white">
-            Key Features
-          </h3>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-            {project.features.map((feature) => (
-              <li key={feature}>{feature}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Challenges */}
-      {project.challenges && project.challenges.length > 0 && (
-        <div>
-          <h3 className="text-xl font-semibold mb-3 dark:text-white">
-            Development Challenges
-          </h3>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-            {project.challenges.map((challenge) => (
-              <li key={challenge}>{challenge}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Implementation */}
-      {project.implementation && (
-        <div>
-          <h3 className="text-xl font-semibold mb-3 dark:text-white">
-            Implementation Details
-          </h3>
-          <div className="prose dark:prose-invert text-gray-700 dark:text-gray-300">
-            <pre className="bg-gray-50 dark:bg-zinc-900 p-4 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
-              {project.implementation}
-            </pre>
-          </div>
-        </div>
-      )}
-
-      {/* Conclusion */}
-      {project.conclusion && (
-        <div>
-          <h3 className="text-xl font-semibold mb-3 dark:text-white">
-            Project Conclusion
-          </h3>
-          <p className="text-gray-700 dark:text-gray-300">
-            {project.conclusion}
+          <h2 className="text-2xl font-bold mb-4 dark:text-white">
+            {projectName}
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            {project.description}
           </p>
         </div>
-      )}
 
-      {/* Real-Time Use Cases */}
-      {project.realTimeUseCases && project.realTimeUseCases.length > 0 && (
-        <div>
-          <h3 className="text-xl font-semibold mb-3 dark:text-white">
-            Real-Time Use Cases
-          </h3>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-            {project.realTimeUseCases.map((useCase) => (
-              <li key={useCase}>{useCase}</li>
-            ))}
-          </ul>
+        {/* Tech Stack */}
+        {project.techStack && project.techStack.length > 0 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-3 dark:text-white">
+              Tech Stack
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {project.techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-full text-xs"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Features */}
+        {project.features && project.features.length > 0 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-3 dark:text-white">
+              Key Features
+            </h3>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+              {project.features.map((feature) => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Challenges */}
+        {project.challenges && project.challenges.length > 0 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-3 dark:text-white">
+              Development Challenges
+            </h3>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+              {project.challenges.map((challenge) => (
+                <li key={challenge}>{challenge}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Implementation */}
+        {project.implementation && (
+          <div>
+            <h3 className="text-xl font-semibold mb-3 dark:text-white">
+              Implementation Details
+            </h3>
+            <div className="prose dark:prose-invert text-gray-700 dark:text-gray-300">
+              <pre className="bg-gray-50 dark:bg-zinc-900 p-4 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
+                {project.implementation}
+              </pre>
+            </div>
+          </div>
+        )}
+
+        {/* Conclusion */}
+        {project.conclusion && (
+          <div>
+            <h3 className="text-xl font-semibold mb-3 dark:text-white">
+              Project Conclusion
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300">
+              {project.conclusion}
+            </p>
+          </div>
+        )}
+
+        {/* Real-Time Use Cases */}
+        {project.realTimeUseCases && project.realTimeUseCases.length > 0 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-3 dark:text-white">
+              Real-Time Use Cases
+            </h3>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+              {project.realTimeUseCases.map((useCase) => (
+                <li key={useCase}>{useCase}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* External Links */}
+        <div className="flex space-x-4">
+          {project.projectUrl && (
+            <a
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+              </svg>
+              GitHub Repository
+            </a>
+          )}
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-4 py-2 rounded-full hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Live Demo
+            </a>
+          )}
         </div>
-      )}
-
-      {/* External Links */}
-      <div className="flex space-x-4">
-        {project.projectUrl && (
-          <a
-            href={project.projectUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-            </svg>
-            GitHub Repository
-          </a>
-        )}
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-4 py-2 rounded-full hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Live Demo
-          </a>
-        )}
       </div>
-    </div>
-  );
-};
+    );
+  };
 
-export default function VideoPage() {
   // Use the useParams hook to get the ID parameter
   const params = useParams();
   const videoId = params?.id as string;
