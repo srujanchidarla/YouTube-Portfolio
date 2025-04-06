@@ -75,7 +75,7 @@ export default function SimpleLoading() {
 
         {/* Loading text */}
         <div className="text-sm animate-ellipsis text-center">
-          Loading your portfolio
+          Loading Portfolio
         </div>
       </div>
     </div>

@@ -74,7 +74,7 @@ const YouTubeLoading = () => {
 
       {/* Loading text with ellipsis animation */}
       <div className="text-gray-700 dark:text-gray-300 text-sm flex items-center">
-        Loading your portfolio
+        Loading Portfolio
         <span className="w-5 text-left overflow-hidden inline-block">
           <span className="animate-ellipsis">...</span>
         </span>
