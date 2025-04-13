@@ -1,4 +1,3 @@
-// Main Analytics page structure
 // app/category/analytics/page.tsx
 
 "use client";
@@ -9,6 +8,7 @@ import GitHubStats from "./components/GitHubStats";
 import SkillsSection from "./components/SkillsSection";
 import ProjectStatistics from "./components/ProjectStatistics";
 import DevelopmentJourney from "./components/DevelopmentJourney";
+import LocalGuideStats from "./components/LocalGuideStats";
 
 const AnalyticsPage = () => {
   return (
@@ -21,13 +21,15 @@ const AnalyticsPage = () => {
       </div>
 
       <p className="text-gray-600 dark:text-gray-300 mb-8">
-        A comprehensive overview of my technical skills, project statistics, and
-        GitHub activity, showcasing my development journey and areas of
-        expertise.
+        A comprehensive overview of my technical skills, project statistics,
+        GitHub activity, and Google Local Guide contributions, showcasing my
+        development journey and areas of expertise.
       </p>
 
       {/* GitHub Stats Section */}
       <GitHubStats />
+
+      {/* Google Local Guide Stats Section */}
 
       {/* Skills Section */}
       <SkillsSection />
@@ -37,6 +39,7 @@ const AnalyticsPage = () => {
 
       {/* Development Journey Timeline */}
       <DevelopmentJourney />
+      <LocalGuideStats />
     </div>
   );
 };
