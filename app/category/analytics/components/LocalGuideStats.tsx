@@ -47,7 +47,7 @@ const LocalGuideStats = () => {
     (localGuideStats.totalPoints / localGuideStats.neededPoints) * 100;
 
   return (
-    <div className="mt-12">
+    <div className="mt-12   ">
       <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
         <MapIcon className="h-6 w-6 mr-2 text-gray-700 dark:text-gray-300" />
         Google Local Guide Stats

@@ -80,7 +80,7 @@ const experiences = [
 // Education data
 const education = [
   {
-    institution: "University of Fairfax",
+    institution: "University of Maryland, Baltimore County",
     degree: "Master's in Computer Science",
     period: "Aug 2024 - Aug 2026",
     gpa: "GPA: 4.0/4.0",

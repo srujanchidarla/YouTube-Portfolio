@@ -81,4 +81,3 @@ export default function SimpleLoading() {
     </div>
   );
 }
-2
