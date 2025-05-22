@@ -561,7 +561,7 @@ export default function VideoPage() {
             </ul>
             <p className="mt-2">
               Currently pursuing a Master&apos;s in Computer Science at
-              University of Maryland Baltimore County with a GPA of 4.0/4.0.
+              University of Fairfax with a GPA of 4.0/4.0.
             </p>
             <div className="mt-3">
               <a
