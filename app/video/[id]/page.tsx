@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // app/video/[id]/page.tsx
 "use client";
 
@@ -24,9 +25,14 @@ import {
 import { useReactions } from "../../../hooks/useReactions";
 import ShareMenu from "../../../components/ui/ShareMenu";
 import VideoPlayerHeader from "../../../components/sections/VideoPlayerHeader";
+import StudyGlobalContent from "@/components/projects/StudyGlobalContent";
+import FlightBuddyContent from "@/components/projects/FlightBuddyContent";
+import SportsPlatformContent from "@/components/projects/SportsPlatformContent";
+import HealthRecordsContent from "@/components/projects/HealthRecordsContent";
+import AgriWiseContent from "@/components/projects/AgriWiseContent";
 
 export default function VideoPage() {
-  // Simple placeholder component to replace the problematic ProjectContentProvider
+  // Enhanced ProjectDetails component with custom content for new projects
   const ProjectDetails = ({ projectId }: { projectId: string }) => {
     // Normalize the project ID to make sure we're using the project name format
     const normalizedId = normalizeProjectId(projectId);
@@ -34,7 +40,37 @@ export default function VideoPage() {
 
     if (!project) return null;
 
-    // Get the display name using our utility function
+    // Render custom content components for new innovative projects
+    switch (normalizedId) {
+      case "agriwise":
+        return <AgriWiseContent />;
+      case "studyglobal":
+        return <StudyGlobalContent />;
+      case "flightbuddy":
+        return <FlightBuddyContent />;
+      case "sportsplatform":
+        return <SportsPlatformContent />;
+      case "healthrecords":
+        return <HealthRecordsContent />;
+      default:
+        // Fallback to generic project details for existing projects
+        return (
+          <GenericProjectDetails
+            project={project}
+            normalizedId={normalizedId}
+          />
+        );
+    }
+  };
+
+  // Generic project details component for existing projects
+  const GenericProjectDetails = ({
+    project,
+    normalizedId,
+  }: {
+    project: any;
+    normalizedId: string;
+  }) => {
     const projectName = getProjectDisplayName(normalizedId);
 
     return (
@@ -55,10 +91,10 @@ export default function VideoPage() {
               Tech Stack
             </h3>
             <div className="flex flex-wrap gap-2">
-              {project.techStack.map((tech) => (
+              {project.techStack.map((tech: string) => (
                 <span
                   key={tech}
-                  className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-full text-xs"
+                  className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full text-sm font-medium"
                 >
                   {tech}
                 </span>
@@ -73,11 +109,16 @@ export default function VideoPage() {
             <h3 className="text-xl font-semibold mb-3 dark:text-white">
               Key Features
             </h3>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-              {project.features.map((feature) => (
-                <li key={feature}>{feature}</li>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {project.features.map((feature: string, index: number) => (
+                <div key={index} className="flex items-start gap-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">
+                    {feature}
+                  </span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         )}
 
@@ -87,11 +128,21 @@ export default function VideoPage() {
             <h3 className="text-xl font-semibold mb-3 dark:text-white">
               Development Challenges
             </h3>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-              {project.challenges.map((challenge) => (
-                <li key={challenge}>{challenge}</li>
+            <div className="space-y-3">
+              {project.challenges.map((challenge: string, index: number) => (
+                <div
+                  key={index}
+                  className="bg-gray-50 dark:bg-zinc-700 rounded-lg p-4"
+                >
+                  <div className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-700 dark:text-gray-300">
+                      {challenge}
+                    </span>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         )}
 
@@ -101,8 +152,8 @@ export default function VideoPage() {
             <h3 className="text-xl font-semibold mb-3 dark:text-white">
               Implementation Details
             </h3>
-            <div className="prose dark:prose-invert text-gray-700 dark:text-gray-300">
-              <pre className="bg-gray-50 dark:bg-zinc-900 p-4 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
+            <div className="bg-gray-50 dark:bg-zinc-900 rounded-lg p-4">
+              <pre className="text-sm whitespace-pre-wrap text-gray-700 dark:text-gray-300 overflow-x-auto">
                 {project.implementation}
               </pre>
             </div>
@@ -115,9 +166,11 @@ export default function VideoPage() {
             <h3 className="text-xl font-semibold mb-3 dark:text-white">
               Project Conclusion
             </h3>
-            <p className="text-gray-700 dark:text-gray-300">
-              {project.conclusion}
-            </p>
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+              <p className="text-gray-700 dark:text-gray-300">
+                {project.conclusion}
+              </p>
+            </div>
           </div>
         )}
 
@@ -127,22 +180,36 @@ export default function VideoPage() {
             <h3 className="text-xl font-semibold mb-3 dark:text-white">
               Real-Time Use Cases
             </h3>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-              {project.realTimeUseCases.map((useCase) => (
-                <li key={useCase}>{useCase}</li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-1 gap-4">
+              {project.realTimeUseCases.map(
+                (useCase: string, index: number) => (
+                  <div
+                    key={index}
+                    className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                        {index + 1}
+                      </div>
+                      <span className="text-gray-700 dark:text-gray-300">
+                        {useCase}
+                      </span>
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
           </div>
         )}
 
         {/* External Links */}
-        <div className="flex space-x-4">
+        <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-200 dark:border-zinc-700">
           {project.projectUrl && (
             <a
               href={project.projectUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+              className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors font-medium"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +228,7 @@ export default function VideoPage() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-4 py-2 rounded-full hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors"
+              className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-4 py-2 rounded-full hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors font-medium"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -182,6 +249,7 @@ export default function VideoPage() {
       </div>
     );
   };
+
   // Use the useParams hook to get the ID parameter
   const params = useParams();
   const videoId = params?.id as string;
@@ -253,28 +321,60 @@ export default function VideoPage() {
       // Track video view
       console.log(`Viewing project: ${projectVideo.title}`);
 
-      // Get related videos (same category, excluding current video)
+      // Get related videos (same primary category, excluding current video)
       const related = allVideos
         .filter((v) => {
           // Make sure we're not including duplicates or the current video
           if (v.id === normalizedId) return false;
 
-          // Only include videos with the same category
-          return v.category === projectVideo.category;
+          // Handle both string and array categories
+          const currentPrimaryCategory = Array.isArray(projectVideo.category)
+            ? projectVideo.category[0]
+            : projectVideo.category;
+          const videoPrimaryCategory = Array.isArray(v.category)
+            ? v.category[0]
+            : v.category;
+
+          return videoPrimaryCategory === currentPrimaryCategory;
         })
         .slice(0, 3);
 
-      // Get suggested videos (different category but similar tech stack)
+      // Get suggested videos (different primary category but similar tech stack or secondary categories)
       const suggested = allVideos
         .filter((v) => {
           // Make sure we're not including duplicates or the current video
           if (v.id === normalizedId) return false;
 
-          // Only include videos from different categories but with similar tech
-          return (
-            v.category !== projectVideo.category &&
-            v.techStack?.some((tech) => projectVideo.techStack?.includes(tech))
-          );
+          const currentPrimaryCategory = Array.isArray(projectVideo.category)
+            ? projectVideo.category[0]
+            : projectVideo.category;
+          const videoPrimaryCategory = Array.isArray(v.category)
+            ? v.category[0]
+            : v.category;
+
+          // Different primary category but similar tech or secondary categories
+          if (videoPrimaryCategory !== currentPrimaryCategory) {
+            // Check for similar tech stack
+            const hasSimilarTech = v.techStack?.some((tech) =>
+              projectVideo.techStack?.includes(tech)
+            );
+
+            // Check for secondary category overlap
+            const currentSecondaryCategories = Array.isArray(
+              projectVideo.category
+            )
+              ? projectVideo.category.slice(1)
+              : [];
+            const videoAllCategories = Array.isArray(v.category)
+              ? v.category
+              : [v.category];
+            const hasSecondaryOverlap = currentSecondaryCategories.some((cat) =>
+              videoAllCategories.includes(cat)
+            );
+
+            return hasSimilarTech || hasSecondaryOverlap;
+          }
+          return false;
         })
         .slice(0, 2);
 
@@ -325,14 +425,16 @@ export default function VideoPage() {
     <div className="flex flex-col lg:flex-row gap-6 p-4 md:p-6">
       {/* Main content */}
       <div className="w-full lg:w-2/3">
-        {/* Always use our custom content player for project videos now */}
+        {/* Custom content player with enhanced project details */}
         <div className="aspect-video mb-4">
           <VideoPlayerContent
             project={{
               id: video.id,
               title: video.title,
               description: video.description || "",
-              category: video.category,
+              category: Array.isArray(video.category)
+                ? video.category[0]
+                : video.category,
               projectUrl: video.projectUrl,
               techStack: video.techStack,
             }}
@@ -343,7 +445,7 @@ export default function VideoPage() {
         {/* Channel info and subscribe button */}
         <VideoPlayerHeader video={video} />
 
-        {/* Add reaction buttons similar to the image */}
+        {/* Enhanced reaction buttons */}
         <div className="flex items-center gap-4 mb-6 flex-wrap">
           {/* Like Button */}
           <button
@@ -472,7 +574,7 @@ export default function VideoPage() {
         <Reviews projectId={normalizeProjectId(videoId)} />
       </div>
 
-      {/* Sidebar with related videos */}
+      {/* Enhanced Sidebar with related videos */}
       <div className="w-full lg:w-1/3">
         {/* Autoplay option */}
         <div className="flex items-center justify-between mb-4 bg-gray-50 dark:bg-zinc-800/70 rounded-lg p-3">
@@ -507,13 +609,15 @@ export default function VideoPage() {
             <span>Related Projects</span>
             {video.category && (
               <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded-full">
-                {video.category}
+                {Array.isArray(video.category)
+                  ? video.category[0]
+                  : video.category}
               </span>
             )}
           </h2>
           <div className="space-y-3">
             {relatedVideos.length > 0 ? (
-              relatedVideos.map((relatedVideo) => (
+              relatedVideos.map((relatedVideo: Video) => (
                 <VideoCard
                   key={relatedVideo.id}
                   video={relatedVideo}
@@ -535,7 +639,7 @@ export default function VideoPage() {
             <span>Trending Projects</span>
           </h2>
           <div className="space-y-3">
-            {trendingVideos.map((trendingVideo) => (
+            {trendingVideos.map((trendingVideo: Video) => (
               <VideoCard
                 key={trendingVideo.id}
                 video={trendingVideo}
@@ -580,7 +684,7 @@ export default function VideoPage() {
             You might also like
           </h2>
           <div className="space-y-3">
-            {suggestedVideos.map((suggestedVideo) => (
+            {suggestedVideos.map((suggestedVideo: Video) => (
               <VideoCard
                 key={suggestedVideo.id}
                 video={suggestedVideo}

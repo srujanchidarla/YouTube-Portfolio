@@ -8,7 +8,6 @@ import { Video } from "../../types";
 import VideoPlayerHeader from "./VideoPlayerHeader";
 import VideoPlayerActions from "./VideoPlayerActions";
 import VideoPlayerTabs from "./VideoPlayerTabs";
-// import Reviews from "./Reviews";
 
 interface VideoPlayerProps {
   video: Video;
@@ -22,6 +21,21 @@ const VideoPlayer = ({ video }: VideoPlayerProps) => {
   if (!video) return <div>Loading...</div>;
 
   const { id, title, category, createdAt } = video;
+
+  // Handle multiple categories
+  const getPrimaryCategory = (): string => {
+    if (Array.isArray(category)) {
+      return category[0] || "";
+    }
+    return category || "";
+  };
+
+  const getAllCategories = (): string[] => {
+    if (Array.isArray(category)) {
+      return category;
+    }
+    return category ? [category] : [];
+  };
 
   // Format date
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true });
@@ -49,8 +63,28 @@ const VideoPlayer = ({ video }: VideoPlayerProps) => {
         />
       </div>
 
-      {/* Video title */}
-      <h1 className="text-xl font-semibold mb-3 dark:text-white">{title}</h1>
+      {/* Video title with category badges */}
+      <div className="mb-3">
+        <h1 className="text-xl font-semibold mb-2 dark:text-white">{title}</h1>
+
+        {/* Category badges */}
+        {getAllCategories().length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {getAllCategories().map((cat, index) => (
+              <span
+                key={index}
+                className={`px-3 py-1 rounded-full text-sm font-medium ${
+                  index === 0
+                    ? "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
+                    : "bg-gray-100 dark:bg-zinc-700 text-gray-700 dark:text-gray-300"
+                }`}
+              >
+                {cat}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Channel info and action buttons */}
       <VideoPlayerHeader video={video} />

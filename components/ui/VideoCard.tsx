@@ -24,6 +24,21 @@ const VideoCard: React.FC<VideoCardProps> = ({
     techStack = [],
   } = video;
 
+  // Handle multiple categories
+  const getPrimaryCategory = (): string => {
+    if (Array.isArray(category)) {
+      return category[0] || "";
+    }
+    return category || "";
+  };
+
+  const getAllCategories = (): string[] => {
+    if (Array.isArray(category)) {
+      return category;
+    }
+    return category ? [category] : [];
+  };
+
   // Format date
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true });
 
@@ -37,7 +52,7 @@ const VideoCard: React.FC<VideoCardProps> = ({
     return `${count} views`;
   };
 
-  // Get primary tech categories for badges
+  // Get primary tech category for badges
   const getPrimaryTechCategory = (): string => {
     if (techStack.includes("React") || techStack.includes("ReactJS"))
       return "React";
@@ -48,7 +63,65 @@ const VideoCard: React.FC<VideoCardProps> = ({
     if (techStack.includes("Node.js") || techStack.includes("Express"))
       return "Node.js";
     if (techStack.includes("Spring Boot")) return "Spring Boot";
+    if (techStack.includes("TypeScript")) return "TypeScript";
+    if (techStack.includes("JavaScript")) return "JavaScript";
     return techStack[0] || "";
+  };
+
+  // Get category color based on type
+  const getCategoryColor = (cat: string): string => {
+    const categoryColors: { [key: string]: string } = {
+      // Innovative tech domains
+      AgriTech:
+        "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300",
+      HealthTech:
+        "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300",
+      EdTech:
+        "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300",
+      "Travel Tech":
+        "bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300",
+      "Sports Tech":
+        "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300",
+
+      // Core development
+      "Web Development":
+        "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300",
+      "Mobile Apps":
+        "bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300",
+      "Browser Extensions":
+        "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300",
+      "Developer Tools":
+        "bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300",
+      "Project Management":
+        "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300",
+
+      // Tech stack
+      "Full Stack":
+        "bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300",
+      Frontend:
+        "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300",
+      Backend:
+        "bg-slate-100 dark:bg-slate-900/30 text-slate-700 dark:text-slate-300",
+
+      // Frameworks
+      React: "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300",
+      Angular: "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300",
+      "Next.js":
+        "bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300",
+
+      // Languages
+      JavaScript:
+        "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300",
+      TypeScript:
+        "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300",
+      "Node.js":
+        "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300",
+    };
+
+    return (
+      categoryColors[cat] ||
+      "bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300"
+    );
   };
 
   return (
@@ -68,10 +141,17 @@ const VideoCard: React.FC<VideoCardProps> = ({
         >
           <ProjectThumbnail projectId={id} title={title} category={category} />
 
-          {/* Category badge */}
+          {/* Primary category badge */}
           <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
-            {category}
+            {getPrimaryCategory()}
           </div>
+
+          {/* Multiple categories indicator */}
+          {getAllCategories().length > 1 && (
+            <div className="absolute bottom-2 left-2 bg-blue-600/80 text-white text-xs px-1.5 py-0.5 rounded">
+              +{getAllCategories().length - 1}
+            </div>
+          )}
         </div>
 
         {/* Video info */}
@@ -93,6 +173,29 @@ const VideoCard: React.FC<VideoCardProps> = ({
           <div className="flex items-center text-xs text-gray-500 dark:text-gray-400 mt-1">
             <span>{channelName}</span>
           </div>
+
+          {/* Category badges for vertical layout */}
+          {layout === "vertical" && getAllCategories().length > 0 && (
+            <div className="flex flex-wrap gap-1 mt-2">
+              {getAllCategories()
+                .slice(0, 3)
+                .map((cat, index) => (
+                  <span
+                    key={index}
+                    className={`px-2 py-0.5 rounded text-xs font-medium ${getCategoryColor(
+                      cat
+                    )}`}
+                  >
+                    {cat}
+                  </span>
+                ))}
+              {getAllCategories().length > 3 && (
+                <span className="px-2 py-0.5 bg-gray-100 dark:bg-zinc-700 text-gray-600 dark:text-gray-300 rounded text-xs">
+                  +{getAllCategories().length - 3}
+                </span>
+              )}
+            </div>
+          )}
 
           {/* Tech stack badges - only show in horizontal layout */}
           {layout === "horizontal" && techStack.length > 0 && (

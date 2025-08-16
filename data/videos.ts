@@ -1,7 +1,129 @@
-// data/videos.ts
+// data/videos.ts - Updated with multiple categories for each project
 import { Video } from "../types";
 
 export const videos: Video[] = [
+  // NEW INNOVATIVE PROJECTS (First 5)
+  {
+    id: "9",
+    title: "AgriWise – Complete Digital Agriculture Platform",
+    thumbnail: "/thumbnails/agriwise.svg",
+    description:
+      "A comprehensive digital agriculture ecosystem for Indian farmers covering crop planning, cultivation guidance, market intelligence, and financial services. Features soil analysis, crop recommendations, real-time market prices, and community support.",
+    views: 1200,
+    likes: 89,
+    createdAt: "2024-12-15",
+    duration: 320,
+    channelName: "Srujan Chidarla",
+    channelAvatar: "/profile.svg",
+    subscribers: 1650,
+    category: ["AgriTech", "Full Stack", "Web Development"], // Multiple categories
+    projectUrl: "https://github.com/srujanchidarla/agriwise",
+    techStack: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "TailwindCSS",
+      "Google Maps API",
+    ],
+  },
+  {
+    id: "10",
+    title: "StudyGlobal – International Student Services Platform",
+    thumbnail: "/thumbnails/studyglobal.svg",
+    description:
+      "A comprehensive digital platform supporting international students through their entire academic journey. Features include essential services hub, interactive tools, cost calculators, and community features for seamless student experience abroad.",
+    views: 850,
+    likes: 67,
+    createdAt: "2024-11-20",
+    duration: 280,
+    channelName: "Srujan Chidarla",
+    channelAvatar: "/profile.svg",
+    subscribers: 1650,
+    category: ["EdTech", "Web Development", "Next.js", "TypeScript"], // Multiple categories
+    projectUrl: "https://github.com/srujanchidarla/studyglobal",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "MongoDB",
+      "Contentful",
+      "Stripe",
+      "AWS S3",
+    ],
+  },
+  {
+    id: "11",
+    title: "Flight Buddy – Travelers Connection Platform",
+    thumbnail: "/thumbnails/flightbuddy.svg",
+    description:
+      "A platform connecting travelers on long-distance flights before their journey. Features flight matching, traveler profiles, in-app messaging, luggage sharing, and airport guides. Includes AI-powered recommendations and real-time flight tracking for enhanced travel experience.",
+    views: 950,
+    likes: 78,
+    createdAt: "2024-10-10",
+    duration: 295,
+    channelName: "Srujan Chidarla",
+    channelAvatar: "/profile.svg",
+    subscribers: 1650,
+    category: ["Travel Tech", "Full Stack", "React", "Backend"], // Multiple categories
+    projectUrl: "https://github.com/srujanchidarla/flightbuddy",
+    techStack: [
+      "React",
+      "Spring Boot",
+      "PostgreSQL",
+      "Flight APIs",
+      "WebSocket",
+      "Docker",
+    ],
+  },
+  {
+    id: "12",
+    title: "Sports & Fitness Platform – FitConnect + TrainHub",
+    thumbnail: "/thumbnails/sportsplatform.svg",
+    description:
+      "A dual-platform ecosystem combining FitConnect (sports venue booking) and TrainHub (fitness trainer discovery). Features venue search, trainer matching, booking systems, community features, and comprehensive fitness tools for active lifestyles.",
+    views: 1100,
+    likes: 92,
+    createdAt: "2024-09-15",
+    duration: 340,
+    channelName: "Srujan Chidarla",
+    channelAvatar: "/profile.svg",
+    subscribers: 1650,
+    category: ["Sports Tech", "Full Stack", "Web Development", "Next.js"], // Multiple categories
+    projectUrl: "https://github.com/srujanchidarla/sportsplatform",
+    techStack: [
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "PostgreSQL",
+      "Google Maps",
+      "Stripe",
+    ],
+  },
+  {
+    id: "13",
+    title: "Health Records Management System",
+    thumbnail: "/thumbnails/healthrecords.svg",
+    description:
+      "End-to-end health records management system tracking patients from birth through their entire healthcare journey. Features secure document storage, prescription management, appointment reminders, and analytics with HIPAA compliance for comprehensive patient care.",
+    views: 750,
+    likes: 64,
+    createdAt: "2024-08-25",
+    duration: 305,
+    channelName: "Srujan Chidarla",
+    channelAvatar: "/profile.svg",
+    subscribers: 1650,
+    category: ["HealthTech", "Full Stack", "TypeScript", "Next.js"], // Multiple categories
+    projectUrl: "https://github.com/srujanchidarla/healthrecords",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "AWS",
+      "HIPAA Compliance",
+    ],
+  },
+
+  // EXISTING PROJECTS (Last 8) - Updated with multiple categories
   {
     id: "1",
     title: "WeatherWise – Real-Time Global Weather Tracking Application",
@@ -11,11 +133,11 @@ export const videos: Video[] = [
     views: 2450,
     likes: 178,
     createdAt: "2023-11-15",
-    duration: 285, // 4:45 minutes
+    duration: 285,
     channelName: "Srujan Chidarla",
     channelAvatar: "/profile.svg",
     subscribers: 1650,
-    category: "Web Development",
+    category: ["Web Development", "Full Stack", "React"], // Multiple categories
     projectUrl: "https://github.com/srujanchidarla/weatherwise",
     techStack: [
       "ReactJS",
@@ -34,11 +156,11 @@ export const videos: Video[] = [
     views: 1890,
     likes: 145,
     createdAt: "2023-09-20",
-    duration: 240, // 4 minutes
+    duration: 240,
     channelName: "Srujan Chidarla",
     channelAvatar: "/profile.svg",
     subscribers: 1650,
-    category: "Web Development",
+    category: ["Web Development", "React", "Frontend"], // Multiple categories
     projectUrl: "https://github.com/srujanchidarla/jobfinder",
     techStack: ["React", "TailwindCSS", "Adzuna API", "React Router", "Vercel"],
   },
@@ -51,11 +173,11 @@ export const videos: Video[] = [
     views: 3200,
     likes: 267,
     createdAt: "2023-08-10",
-    duration: 210, // 3:30 minutes
+    duration: 210,
     channelName: "Srujan Chidarla",
     channelAvatar: "/profile.svg",
     subscribers: 1650,
-    category: "Browser Extensions",
+    category: ["Browser Extensions", "Developer Tools", "JavaScript"], // Multiple categories
     projectUrl: "https://github.com/srujanchidarla/pixelpeek",
     techStack: ["JavaScript", "Chrome Extensions API", "HTML5", "CSS3"],
   },
@@ -68,11 +190,11 @@ export const videos: Video[] = [
     views: 1450,
     likes: 203,
     createdAt: "2024-02-15",
-    duration: 195, // 3:15 minutes
+    duration: 195,
     channelName: "Srujan Chidarla",
     channelAvatar: "/profile.svg",
     subscribers: 1650,
-    category: "Developer Tools",
+    category: ["Developer Tools", "TypeScript"], // Multiple categories
     projectUrl:
       "https://marketplace.visualstudio.com/items?itemName=srujanchidarla.truescreenshot",
     techStack: [
@@ -91,11 +213,11 @@ export const videos: Video[] = [
     views: 1750,
     likes: 128,
     createdAt: "2023-06-05",
-    duration: 320, // 5:20 minutes
+    duration: 320,
     channelName: "Srujan Chidarla",
     channelAvatar: "/profile.svg",
     subscribers: 1650,
-    category: "Project Management",
+    category: ["Project Management", "Full Stack", "Angular"], // Multiple categories
     projectUrl: "https://github.com/srujanchidarla/agile-retro-tool",
     techStack: [
       "AngularJS",
@@ -114,11 +236,11 @@ export const videos: Video[] = [
     views: 2150,
     likes: 156,
     createdAt: "2022-02-10",
-    duration: 270, // 4:30 minutes
+    duration: 270,
     channelName: "Srujan Chidarla",
     channelAvatar: "/profile.svg",
     subscribers: 1650,
-    category: "Web Development",
+    category: ["Full Stack", "Web Development", "React"], // Multiple categories
     projectUrl: "https://github.com/srujanchidarla/ecommerce-platform",
     techStack: [
       "MongoDB",
@@ -138,11 +260,11 @@ export const videos: Video[] = [
     views: 980,
     likes: 87,
     createdAt: "2020-04-15",
-    duration: 185, // 3:05 minutes
+    duration: 185,
     channelName: "Srujan Chidarla",
     channelAvatar: "/profile.svg",
     subscribers: 1650,
-    category: "Mobile Apps",
+    category: ["Mobile Apps", "Full Stack"], // Multiple categories
     projectUrl: "https://github.com/srujanchidarla/make-a-receipt",
     techStack: ["React Native", "Firebase", "JavaScript", "Mobile UI/UX"],
   },
@@ -155,11 +277,11 @@ export const videos: Video[] = [
     views: 850,
     likes: 75,
     createdAt: "2021-09-05",
-    duration: 150, // 2:30 minutes
+    duration: 150,
     channelName: "Srujan Chidarla",
     channelAvatar: "/profile.svg",
     subscribers: 1650,
-    category: "Web Development",
+    category: ["Web Development", "JavaScript", "Frontend"], // Multiple categories
     projectUrl: "https://github.com/srujanchidarla/interactive-todo",
     techStack: ["HTML", "CSS", "JavaScript"],
   },

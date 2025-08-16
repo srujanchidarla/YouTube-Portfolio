@@ -24,7 +24,7 @@ I'm always open to connecting on innovative tech projects that make an impact.`,
     { name: "GitHub", url: "https://github.com/srujanchidarla" },
     { name: "LinkedIn", url: "https://linkedin.com/in/srujan-chidarla" },
     { name: "Portfolio", url: "https://srujanchidarla.com" },
-    { name: "Email", url: "mailto:srujanchidarla99@gmail.com" },
+    { name: "Email", url: "mailto:srujanchidarla.uof@gmail.com" },
   ],
   joinDate: "Aug 2021",
 };
@@ -80,9 +80,9 @@ const experiences = [
 // Education data
 const education = [
   {
-    institution: "University of Maryland, Baltimore County",
+    institution: "University of Fairfax",
     degree: "Master's in Computer Science",
-    period: "Aug 2024 - Aug 2026",
+    period: "Aug 2024 - Dec 2025",
     gpa: "GPA: 4.0/4.0",
     description:
       "Focusing on cloud computing and artificial intelligence, this program enhances my ability to develop innovative solutions for real-world challenges.",
@@ -91,7 +91,7 @@ const education = [
     institution: "VNR Vignana Jyothi Institute of Engineering & Technology",
     degree: "Bachelor of Technology in Information Technology",
     period: "Aug 2018 - Aug 2021",
-    gpa: "GPA: 7.63/10",
+    gpa: "GPA: 3.8/4.0",
     description:
       "Developed a strong foundation in full-stack development and algorithms, complemented by active participation in sports and leadership roles.",
   },

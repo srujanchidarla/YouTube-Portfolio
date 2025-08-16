@@ -1,4 +1,4 @@
-// types/index.ts
+// types/index.ts - Updated to support multiple categories
 
 export interface Video {
   id: string;
@@ -14,7 +14,7 @@ export interface Video {
   channelName: string;
   channelAvatar?: string;
   subscribers?: number;
-  category?: string;
+  category?: string | string[]; // Updated to support both single and multiple categories
   projectUrl?: string;
   techStack: string[];
 
