@@ -68,10 +68,10 @@ const VideoCard: React.FC<VideoCardProps> = ({
     return techStack[0] || "";
   };
 
-  // Get category color based on type
+  // Get category color based on type - UPDATED WITH NEW CATEGORIES
   const getCategoryColor = (cat: string): string => {
     const categoryColors: { [key: string]: string } = {
-      // Innovative tech domains
+      // NEW INNOVATIVE TECH DOMAINS
       AgriTech:
         "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300",
       HealthTech:
@@ -79,23 +79,27 @@ const VideoCard: React.FC<VideoCardProps> = ({
       EdTech:
         "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300",
       "Travel Tech":
-        "bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300",
+        "bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300",
       "Sports Tech":
         "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300",
 
-      // Core development
+      // Core development categories
       "Web Development":
+        "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300",
+      "Web Application":
         "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300",
       "Mobile Apps":
         "bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300",
       "Browser Extensions":
+        "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300",
+      "Browser Extension":
         "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300",
       "Developer Tools":
         "bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300",
       "Project Management":
         "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300",
 
-      // Tech stack
+      // Tech stack categories
       "Full Stack":
         "bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300",
       Frontend:
@@ -103,13 +107,13 @@ const VideoCard: React.FC<VideoCardProps> = ({
       Backend:
         "bg-slate-100 dark:bg-slate-900/30 text-slate-700 dark:text-slate-300",
 
-      // Frameworks
+      // Framework categories
       React: "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300",
       Angular: "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300",
       "Next.js":
         "bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300",
 
-      // Languages
+      // Language categories
       JavaScript:
         "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300",
       TypeScript:
@@ -122,6 +126,18 @@ const VideoCard: React.FC<VideoCardProps> = ({
       categoryColors[cat] ||
       "bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300"
     );
+  };
+
+  // Check if this is a new innovative project
+  const isNewProject = (): boolean => {
+    const newProjectIds = [
+      "agriwise",
+      "studyglobal",
+      "flightbuddy",
+      "sportsplatform",
+      "healthrecords",
+    ];
+    return newProjectIds.includes(id);
   };
 
   return (
@@ -139,7 +155,15 @@ const VideoCard: React.FC<VideoCardProps> = ({
               : "w-full aspect-video"
           }`}
         >
+          {/* Force ProjectThumbnail for all projects to ensure SVGs show */}
           <ProjectThumbnail projectId={id} title={title} category={category} />
+
+          {/* NEW badge for innovative projects */}
+          {isNewProject() && (
+            <div className="absolute top-2 left-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs px-2 py-1 rounded-full font-bold">
+              NEW
+            </div>
+          )}
 
           {/* Primary category badge */}
           <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">

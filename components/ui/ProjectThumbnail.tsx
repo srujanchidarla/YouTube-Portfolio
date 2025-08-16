@@ -82,7 +82,7 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
   // Select SVG based on projectId (handle both old numbered and new string IDs)
   switch (projectId) {
     // NEW INNOVATIVE PROJECTS
-    case "agriwise":
+    case "9": // AgriWise
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -90,90 +90,230 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
           className="w-full h-full"
         >
           <defs>
-            <linearGradient id="agriGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <linearGradient
+              id="agriGradient9"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#22C55E" />
+              <stop offset="50%" stopColor="#16A34A" />
               <stop offset="100%" stopColor="#15803D" />
+            </linearGradient>
+            <linearGradient
+              id="agriSkyGradient9"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#87CEEB" />
+              <stop offset="100%" stopColor="#4682B4" />
             </linearGradient>
           </defs>
 
-          {/* Background */}
-          <rect width="800" height="450" fill="url(#agriGradient)" />
+          {/* Sky Background */}
+          <rect width="800" height="300" fill="url(#agriSkyGradient9)" />
 
-          {/* Farm landscape */}
+          {/* Ground */}
           <path
-            d="M0 300 Q200 280 400 300 T800 300 L800 450 L0 450 Z"
-            fill="#16A34A"
+            d="M0 280 Q200 260 400 280 T800 280 L800 450 L0 450 Z"
+            fill="url(#agriGradient9)"
           />
 
           {/* Sun */}
-          <circle cx="700" cy="80" r="50" fill="#FCD34D" />
+          <circle cx="680" cy="80" r="45" fill="#FCD34D" opacity="0.9" />
+          <circle cx="680" cy="80" r="50" fill="#FEF3C7" opacity="0.5" />
 
-          {/* Crops/plants */}
+          {/* Clouds */}
+          <g fill="white" opacity="0.8">
+            <ellipse cx="120" cy="90" rx="40" ry="20" />
+            <ellipse cx="100" cy="100" rx="30" ry="15" />
+            <ellipse cx="140" cy="100" rx="35" ry="18" />
+
+            <ellipse cx="300" cy="70" rx="35" ry="18" />
+            <ellipse cx="285" cy="80" rx="25" ry="12" />
+            <ellipse cx="315" cy="80" rx="28" ry="14" />
+          </g>
+
+          {/* Farm Fields */}
+          <rect
+            x="50"
+            y="300"
+            width="150"
+            height="80"
+            fill="#16A34A"
+            opacity="0.7"
+          />
+          <rect
+            x="220"
+            y="310"
+            width="180"
+            height="70"
+            fill="#22C55E"
+            opacity="0.7"
+          />
+          <rect
+            x="420"
+            y="305"
+            width="160"
+            height="75"
+            fill="#15803D"
+            opacity="0.7"
+          />
+
+          {/* Crops/Plants */}
           <g fill="#065F46">
             <path
-              d="M100 280 Q110 260 120 280 Q130 260 140 280"
+              d="M80 320 Q85 305 90 320 Q95 305 100 320"
               stroke="#065F46"
-              strokeWidth="3"
+              strokeWidth="2"
               fill="none"
             />
             <path
-              d="M200 285 Q210 265 220 285 Q230 265 240 285"
+              d="M120 325 Q125 310 130 325 Q135 310 140 325"
               stroke="#065F46"
-              strokeWidth="3"
+              strokeWidth="2"
               fill="none"
             />
             <path
-              d="M300 275 Q310 255 320 275 Q330 255 340 275"
+              d="M160 318 Q165 303 170 318 Q175 303 180 318"
               stroke="#065F46"
-              strokeWidth="3"
+              strokeWidth="2"
+              fill="none"
+            />
+
+            <path
+              d="M250 330 Q255 315 260 330 Q265 315 270 330"
+              stroke="#065F46"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path
+              d="M290 335 Q295 320 300 335 Q305 320 310 335"
+              stroke="#065F46"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path
+              d="M330 328 Q335 313 340 328 Q345 313 350 328"
+              stroke="#065F46"
+              strokeWidth="2"
+              fill="none"
+            />
+
+            <path
+              d="M450 325 Q455 310 460 325 Q465 310 470 325"
+              stroke="#065F46"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path
+              d="M490 330 Q495 315 500 330 Q505 315 510 330"
+              stroke="#065F46"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path
+              d="M530 322 Q535 307 540 322 Q545 307 550 322"
+              stroke="#065F46"
+              strokeWidth="2"
               fill="none"
             />
           </g>
 
-          {/* Smart device/tablet */}
+          {/* Smart Tablet/Device */}
           <rect
-            x="450"
+            x="580"
             y="200"
-            width="200"
-            height="130"
-            rx="10"
+            width="160"
+            height="110"
+            rx="12"
             fill="#1F2937"
           />
-          <rect
-            x="460"
-            y="210"
-            width="180"
-            height="110"
-            rx="5"
-            fill="#3B82F6"
-          />
+          <rect x="590" y="210" width="140" height="90" rx="8" fill="#3B82F6" />
 
-          {/* Data visualization on screen */}
-          <g transform="translate(470, 220)">
-            <rect width="160" height="80" fill="#1E40AF" />
+          {/* Screen Content - Dashboard */}
+          <g transform="translate(600, 220)">
+            <rect width="120" height="70" fill="#1E40AF" rx="4" />
+
             <text
-              x="80"
-              y="25"
+              x="60"
+              y="15"
               fontFamily="Arial, sans-serif"
-              fontSize="16"
+              fontSize="12"
               fontWeight="bold"
               fill="white"
               textAnchor="middle"
             >
-              Soil Analysis
+              AgriWise Dashboard
             </text>
-            <rect x="10" y="35" width="40" height="30" fill="#22C55E" />
-            <rect x="60" y="40" width="40" height="25" fill="#FCD34D" />
-            <rect x="110" y="45" width="40" height="20" fill="#EF4444" />
+
+            <rect x="10" y="25" width="30" height="15" fill="#22C55E" rx="2" />
+            <rect x="45" y="30" width="25" height="10" fill="#FCD34D" rx="2" />
+            <rect x="75" y="28" width="35" height="12" fill="#EF4444" rx="2" />
+
+            <circle cx="15" cy="50" r="4" fill="#10B981" />
+            <circle cx="35" cy="50" r="4" fill="#F59E0B" />
+            <circle cx="55" cy="50" r="4" fill="#EF4444" />
+
+            <text
+              x="10"
+              y="65"
+              fontFamily="Arial, sans-serif"
+              fontSize="8"
+              fill="#E5E7EB"
+            >
+              Soil pH: 6.8
+            </text>
+            <text
+              x="70"
+              y="65"
+              fontFamily="Arial, sans-serif"
+              fontSize="8"
+              fill="#E5E7EB"
+            >
+              Moisture: 45%
+            </text>
           </g>
 
-          {/* Logo */}
-          <g transform="translate(50, 350)">
+          {/* Tractor */}
+          <g transform="translate(620, 320)">
+            <rect x="0" y="15" width="40" height="15" rx="3" fill="#DC2626" />
+            <rect x="35" y="10" width="25" height="25" rx="3" fill="#991B1B" />
+            <circle cx="10" cy="35" r="8" fill="#374151" />
+            <circle cx="45" cy="35" r="8" fill="#374151" />
+            <circle cx="10" cy="35" r="5" fill="#6B7280" />
+            <circle cx="45" cy="35" r="5" fill="#6B7280" />
+          </g>
+
+          {/* IoT Sensors */}
+          <g fill="#3B82F6">
+            <circle cx="150" cy="290" r="3" />
+            <circle cx="280" cy="285" r="3" />
+            <circle cx="480" cy="288" r="3" />
+          </g>
+
+          {/* Connection Lines */}
+          <g
+            stroke="#60A5FA"
+            strokeWidth="1"
+            strokeDasharray="3,3"
+            opacity="0.6"
+          >
+            <line x1="150" y1="290" x2="660" y2="255" />
+            <line x1="280" y1="285" x2="660" y2="255" />
+            <line x1="480" y1="288" x2="660" y2="255" />
+          </g>
+
+          {/* Title */}
+          <g transform="translate(50, 400)">
             <text
               x="0"
               y="30"
               fontFamily="Arial, sans-serif"
-              fontSize="36"
+              fontSize="32"
               fontWeight="bold"
               fill="white"
             >
@@ -181,25 +321,25 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
             </text>
             <text
               x="0"
-              y="60"
+              y="55"
               fontFamily="Arial, sans-serif"
-              fontSize="18"
-              fill="#E5E7EB"
+              fontSize="16"
+              fill="#D1FAE5"
             >
-              Digital Agriculture Platform
+              Complete Digital Agriculture Platform
             </text>
           </g>
 
           {videoUrl && (
             <g>
-              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
-              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+              <circle cx="400" cy="225" r="40" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 210 L385 240 L415 225 Z" fill="white" />
             </g>
           )}
         </svg>
       );
 
-    case "studyglobal":
+    case "10": // StudyGlobal
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -208,98 +348,262 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
         >
           <defs>
             <linearGradient
-              id="studyGradient"
+              id="studyGradient10"
               x1="0%"
               y1="0%"
               x2="100%"
               y2="100%"
             >
               <stop offset="0%" stopColor="#3B82F6" />
+              <stop offset="50%" stopColor="#2563EB" />
               <stop offset="100%" stopColor="#1E40AF" />
             </linearGradient>
+            <radialGradient id="studyGlobeGradient10" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stopColor="#60A5FA" />
+              <stop offset="100%" stopColor="#1E40AF" />
+            </radialGradient>
           </defs>
 
           {/* Background */}
-          <rect width="800" height="450" fill="url(#studyGradient)" />
+          <rect width="800" height="450" fill="url(#studyGradient10)" />
 
-          {/* Globe */}
-          <circle cx="400" cy="200" r="120" fill="#1E3A8A" opacity="0.8" />
+          {/* Central Globe */}
           <circle
             cx="400"
             cy="200"
-            r="120"
+            r="100"
+            fill="url(#studyGlobeGradient10)"
+            opacity="0.9"
+          />
+          <circle
+            cx="400"
+            cy="200"
+            r="100"
             fill="none"
-            stroke="#60A5FA"
+            stroke="#93C5FD"
             strokeWidth="2"
           />
 
-          {/* Globe lines */}
-          <path
-            d="M280 200 Q400 120 520 200 Q400 280 280 200"
-            fill="none"
-            stroke="#60A5FA"
-            strokeWidth="1"
-          />
-          <path
-            d="M320 150 Q400 180 480 150"
-            fill="none"
-            stroke="#60A5FA"
-            strokeWidth="1"
-          />
-          <path
-            d="M320 250 Q400 220 480 250"
-            fill="none"
-            stroke="#60A5FA"
-            strokeWidth="1"
-          />
+          {/* Globe Grid Lines */}
+          <g stroke="#DBEAFE" strokeWidth="1" opacity="0.7">
+            <path d="M300 200 Q400 120 500 200 Q400 280 300 200" fill="none" />
+            <path d="M330 160 Q400 140 470 160" fill="none" />
+            <path d="M330 240 Q400 260 470 240" fill="none" />
 
-          {/* Graduation cap */}
-          <g transform="translate(350, 140)">
-            <rect x="0" y="30" width="100" height="8" fill="#FCD34D" />
-            <path d="M50 20 L10 35 L50 50 L90 35 Z" fill="#111827" />
-            <rect x="80" y="40" width="3" height="30" fill="#111827" />
-            <rect x="78" y="35" width="7" height="8" fill="#111827" />
+            <ellipse cx="400" cy="200" rx="100" ry="30" fill="none" />
+            <ellipse cx="400" cy="200" rx="100" ry="60" fill="none" />
           </g>
 
-          {/* Connection points */}
-          <circle cx="300" cy="150" r="8" fill="#FCD34D" />
-          <circle cx="500" cy="180" r="8" fill="#FCD34D" />
-          <circle cx="350" cy="300" r="8" fill="#FCD34D" />
-          <circle cx="480" cy="280" r="8" fill="#FCD34D" />
+          {/* Graduation Cap on Globe */}
+          <g transform="translate(360, 170)">
+            <rect x="0" y="25" width="80" height="6" fill="#FCD34D" rx="3" />
+            <path d="M40 15 L10 28 L40 41 L70 28 Z" fill="#111827" />
+            <rect x="65" y="32" width="2" height="20" fill="#111827" />
+            <rect x="64" y="29" width="4" height="6" fill="#111827" />
+          </g>
 
-          {/* Connection lines */}
-          <path
-            d="M300 150 L400 200"
-            stroke="#FCD34D"
-            strokeWidth="2"
-            opacity="0.6"
-          />
-          <path
-            d="M500 180 L400 200"
-            stroke="#FCD34D"
-            strokeWidth="2"
-            opacity="0.6"
-          />
-          <path
-            d="M350 300 L400 200"
-            stroke="#FCD34D"
-            strokeWidth="2"
-            opacity="0.6"
-          />
-          <path
-            d="M480 280 L400 200"
-            stroke="#FCD34D"
-            strokeWidth="2"
-            opacity="0.6"
-          />
+          {/* Country/University Nodes */}
+          <g>
+            <circle cx="200" cy="160" r="12" fill="#FCD34D" />
+            <text
+              x="200"
+              y="145"
+              fontFamily="Arial, sans-serif"
+              fontSize="10"
+              fontWeight="bold"
+              fill="white"
+              textAnchor="middle"
+            >
+              USA
+            </text>
 
-          {/* Logo */}
-          <g transform="translate(250, 360)">
+            <circle cx="380" cy="140" r="12" fill="#FCD34D" />
+            <text
+              x="380"
+              y="125"
+              fontFamily="Arial, sans-serif"
+              fontSize="10"
+              fontWeight="bold"
+              fill="white"
+              textAnchor="middle"
+            >
+              UK
+            </text>
+
+            <circle cx="180" cy="120" r="12" fill="#FCD34D" />
+            <text
+              x="180"
+              y="105"
+              fontFamily="Arial, sans-serif"
+              fontSize="10"
+              fontWeight="bold"
+              fill="white"
+              textAnchor="middle"
+            >
+              CAN
+            </text>
+
+            <circle cx="580" cy="280" r="12" fill="#FCD34D" />
+            <text
+              x="580"
+              y="265"
+              fontFamily="Arial, sans-serif"
+              fontSize="10"
+              fontWeight="bold"
+              fill="white"
+              textAnchor="middle"
+            >
+              AUS
+            </text>
+
+            <circle cx="420" cy="160" r="12" fill="#FCD34D" />
+            <text
+              x="420"
+              y="145"
+              fontFamily="Arial, sans-serif"
+              fontSize="10"
+              fontWeight="bold"
+              fill="white"
+              textAnchor="middle"
+            >
+              GER
+            </text>
+          </g>
+
+          {/* Connection Lines */}
+          <g stroke="#FCD34D" strokeWidth="2" opacity="0.6">
+            <line x1="200" y1="160" x2="400" y2="200" />
+            <line x1="380" y1="140" x2="400" y2="200" />
+            <line x1="180" y1="120" x2="400" y2="200" />
+            <line x1="580" y1="280" x2="400" y2="200" />
+            <line x1="420" y1="160" x2="400" y2="200" />
+          </g>
+
+          {/* Services Hub */}
+          <g transform="translate(580, 100)">
+            <rect
+              width="150"
+              height="80"
+              rx="8"
+              fill="rgba(255,255,255,0.15)"
+            />
+            <text
+              x="75"
+              y="20"
+              fontFamily="Arial, sans-serif"
+              fontSize="12"
+              fontWeight="bold"
+              fill="white"
+              textAnchor="middle"
+            >
+              Services Hub
+            </text>
+
+            <g transform="translate(20, 30)">
+              <rect x="0" y="0" width="20" height="15" rx="2" fill="#FCD34D" />
+              <text
+                x="10"
+                y="25"
+                fontFamily="Arial, sans-serif"
+                fontSize="8"
+                fill="white"
+                textAnchor="middle"
+              >
+                Bank
+              </text>
+            </g>
+
+            <g transform="translate(50, 30)">
+              <rect x="0" y="0" width="20" height="15" rx="2" fill="#FCD34D" />
+              <text
+                x="10"
+                y="25"
+                fontFamily="Arial, sans-serif"
+                fontSize="8"
+                fill="white"
+                textAnchor="middle"
+              >
+                House
+              </text>
+            </g>
+
+            <g transform="translate(80, 30)">
+              <rect x="0" y="0" width="20" height="15" rx="2" fill="#FCD34D" />
+              <text
+                x="10"
+                y="25"
+                fontFamily="Arial, sans-serif"
+                fontSize="8"
+                fill="white"
+                textAnchor="middle"
+              >
+                Mobile
+              </text>
+            </g>
+
+            <g transform="translate(110, 30)">
+              <rect x="0" y="0" width="20" height="15" rx="2" fill="#FCD34D" />
+              <text
+                x="10"
+                y="25"
+                fontFamily="Arial, sans-serif"
+                fontSize="8"
+                fill="white"
+                textAnchor="middle"
+              >
+                Card
+              </text>
+            </g>
+          </g>
+
+          {/* Cost Calculator */}
+          <g transform="translate(50, 320)">
+            <rect
+              width="200"
+              height="60"
+              rx="8"
+              fill="rgba(255,255,255,0.15)"
+            />
+            <text
+              x="100"
+              y="20"
+              fontFamily="Arial, sans-serif"
+              fontSize="14"
+              fontWeight="bold"
+              fill="white"
+              textAnchor="middle"
+            >
+              Cost Calculator
+            </text>
+            <text
+              x="100"
+              y="35"
+              fontFamily="Arial, sans-serif"
+              fontSize="12"
+              fill="#FCD34D"
+              textAnchor="middle"
+            >
+              Living: $2,500/month
+            </text>
+            <text
+              x="100"
+              y="50"
+              fontFamily="Arial, sans-serif"
+              fontSize="12"
+              fill="#FCD34D"
+              textAnchor="middle"
+            >
+              Tuition: $25,000/year
+            </text>
+          </g>
+
+          {/* Title */}
+          <g transform="translate(280, 370)">
             <text
               x="0"
               y="30"
               fontFamily="Arial, sans-serif"
-              fontSize="36"
+              fontSize="32"
               fontWeight="bold"
               fill="white"
             >
@@ -307,10 +611,10 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
             </text>
             <text
               x="0"
-              y="60"
+              y="55"
               fontFamily="Arial, sans-serif"
-              fontSize="18"
-              fill="#E5E7EB"
+              fontSize="16"
+              fill="#DBEAFE"
             >
               International Student Services Platform
             </text>
@@ -318,14 +622,14 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
 
           {videoUrl && (
             <g>
-              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
-              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+              <circle cx="400" cy="225" r="40" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 210 L385 240 L415 225 Z" fill="white" />
             </g>
           )}
         </svg>
       );
 
-    case "flightbuddy":
+    case "11": // FlightBuddy
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -334,95 +638,332 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
         >
           <defs>
             <linearGradient
-              id="flightGradient"
+              id="flightSkyGradient11"
               x1="0%"
               y1="0%"
               x2="0%"
               y2="100%"
             >
               <stop offset="0%" stopColor="#0EA5E9" />
+              <stop offset="50%" stopColor="#0284C7" />
               <stop offset="100%" stopColor="#0369A1" />
             </linearGradient>
           </defs>
 
-          {/* Background - sky */}
-          <rect width="800" height="450" fill="url(#flightGradient)" />
+          {/* Sky Background */}
+          <rect width="800" height="450" fill="url(#flightSkyGradient11)" />
 
           {/* Clouds */}
-          <g fill="white" opacity="0.7">
-            <ellipse cx="150" cy="100" rx="60" ry="30" />
-            <ellipse cx="120" cy="110" rx="40" ry="20" />
-            <ellipse cx="180" cy="110" rx="50" ry="25" />
+          <g fill="white" opacity="0.8">
+            <ellipse cx="120" cy="80" rx="50" ry="25" />
+            <ellipse cx="90" cy="90" rx="35" ry="18" />
+            <ellipse cx="150" cy="90" rx="40" ry="20" />
 
-            <ellipse cx="650" cy="80" rx="50" ry="25" />
-            <ellipse cx="620" cy="90" rx="35" ry="18" />
-            <ellipse cx="680" cy="90" rx="40" ry="20" />
+            <ellipse cx="600" cy="60" rx="45" ry="22" />
+            <ellipse cx="575" cy="70" rx="30" ry="15" />
+            <ellipse cx="625" cy="70" rx="35" ry="17" />
+
+            <ellipse cx="350" cy="120" rx="40" ry="20" />
+            <ellipse cx="325" cy="130" rx="25" ry="12" />
+            <ellipse cx="375" cy="130" rx="30" ry="15" />
           </g>
 
-          {/* Airplane */}
-          <g transform="translate(350, 180) rotate(-15)">
-            <rect x="0" y="15" width="120" height="20" rx="10" fill="#374151" />
-            <path d="M120 25 L140 20 L140 30 Z" fill="#374151" />
-            <rect x="30" y="5" width="60" height="10" rx="5" fill="#6B7280" />
-            <rect x="30" y="35" width="60" height="10" rx="5" fill="#6B7280" />
-            <rect x="90" y="0" width="15" height="50" rx="7" fill="#6B7280" />
+          {/* Main Airplane */}
+          <g transform="translate(300, 180) rotate(-10)">
+            <ellipse cx="60" cy="25" rx="80" ry="12" fill="#E5E7EB" />
+            <rect x="0" y="18" width="120" height="14" rx="7" fill="#374151" />
+            <path d="M120 25 L145 20 L145 30 Z" fill="#374151" />
+
+            {/* Wings */}
+            <rect x="25" y="8" width="70" height="8" rx="4" fill="#6B7280" />
+            <rect x="25" y="32" width="70" height="8" rx="4" fill="#6B7280" />
+
+            {/* Tail */}
+            <rect x="85" y="5" width="12" height="40" rx="6" fill="#6B7280" />
+
+            {/* Windows */}
+            <circle cx="30" cy="25" r="3" fill="#60A5FA" />
+            <circle cx="45" cy="25" r="3" fill="#60A5FA" />
+            <circle cx="60" cy="25" r="3" fill="#60A5FA" />
+            <circle cx="75" cy="25" r="3" fill="#60A5FA" />
           </g>
 
-          {/* Flight path */}
+          {/* Flight Path */}
           <path
-            d="M100 300 Q300 200 500 250 T700 280"
+            d="M80 300 Q200 200 350 250 Q500 220 650 280"
             stroke="#FCD34D"
-            strokeWidth="3"
+            strokeWidth="4"
             fill="none"
-            strokeDasharray="10,5"
+            strokeDasharray="15,10"
+            opacity="0.8"
           />
 
-          {/* Connection icons */}
-          <g fill="#FCD34D">
-            <circle cx="150" cy="320" r="12" />
+          {/* Airport/City Markers */}
+          <g>
+            {/* Departure City */}
+            <g transform="translate(80, 300)">
+              <circle cx="0" cy="0" r="15" fill="#FCD34D" />
+              <text
+                x="0"
+                y="5"
+                fontFamily="Arial, sans-serif"
+                fontSize="14"
+                fontWeight="bold"
+                fill="#0369A1"
+                textAnchor="middle"
+              >
+                A
+              </text>
+              <rect
+                x="-30"
+                y="20"
+                width="60"
+                height="25"
+                rx="4"
+                fill="rgba(255,255,255,0.9)"
+              />
+              <text
+                x="0"
+                y="35"
+                fontFamily="Arial, sans-serif"
+                fontSize="10"
+                fontWeight="bold"
+                fill="#0369A1"
+                textAnchor="middle"
+              >
+                New York
+              </text>
+            </g>
+
+            {/* Destination City */}
+            <g transform="translate(650, 280)">
+              <circle cx="0" cy="0" r="15" fill="#FCD34D" />
+              <text
+                x="0"
+                y="5"
+                fontFamily="Arial, sans-serif"
+                fontSize="14"
+                fontWeight="bold"
+                fill="#0369A1"
+                textAnchor="middle"
+              >
+                B
+              </text>
+              <rect
+                x="-25"
+                y="20"
+                width="50"
+                height="25"
+                rx="4"
+                fill="rgba(255,255,255,0.9)"
+              />
+              <text
+                x="0"
+                y="35"
+                fontFamily="Arial, sans-serif"
+                fontSize="10"
+                fontWeight="bold"
+                fill="#0369A1"
+                textAnchor="middle"
+              >
+                London
+              </text>
+            </g>
+
+            {/* Layover City */}
+            <g transform="translate(350, 250)">
+              <circle cx="0" cy="0" r="12" fill="#F59E0B" />
+              <text
+                x="0"
+                y="4"
+                fontFamily="Arial, sans-serif"
+                fontSize="12"
+                fontWeight="bold"
+                fill="white"
+                textAnchor="middle"
+              >
+                C
+              </text>
+              <rect
+                x="-25"
+                y="18"
+                width="50"
+                height="20"
+                rx="3"
+                fill="rgba(255,255,255,0.9)"
+              />
+              <text
+                x="0"
+                y="30"
+                fontFamily="Arial, sans-serif"
+                fontSize="9"
+                fontWeight="bold"
+                fill="#0369A1"
+                textAnchor="middle"
+              >
+                Dubai
+              </text>
+            </g>
+          </g>
+
+          {/* Traveler Connection Cards */}
+          <g transform="translate(500, 120)">
+            <rect
+              width="250"
+              height="100"
+              rx="12"
+              fill="rgba(255,255,255,0.95)"
+            />
+            <rect width="250" height="30" rx="12" fill="#0369A1" />
             <text
-              x="150"
-              y="327"
+              x="125"
+              y="20"
               fontFamily="Arial, sans-serif"
-              fontSize="16"
-              fill="#0369A1"
+              fontSize="14"
+              fontWeight="bold"
+              fill="white"
               textAnchor="middle"
             >
-              A
+              Flight Connections
             </text>
 
-            <circle cx="350" cy="260" r="12" />
+            {/* Traveler profiles */}
+            <g transform="translate(20, 40)">
+              <circle cx="15" cy="15" r="12" fill="#FCD34D" />
+              <text
+                x="15"
+                y="19"
+                fontFamily="Arial, sans-serif"
+                fontSize="10"
+                fontWeight="bold"
+                fill="#0369A1"
+                textAnchor="middle"
+              >
+                JS
+              </text>
+              <text
+                x="35"
+                y="15"
+                fontFamily="Arial, sans-serif"
+                fontSize="10"
+                fill="#374151"
+              >
+                John Smith
+              </text>
+              <text
+                x="35"
+                y="25"
+                fontFamily="Arial, sans-serif"
+                fontSize="8"
+                fill="#6B7280"
+              >
+                Software Engineer
+              </text>
+            </g>
+
+            <g transform="translate(130, 40)">
+              <circle cx="15" cy="15" r="12" fill="#10B981" />
+              <text
+                x="15"
+                y="19"
+                fontFamily="Arial, sans-serif"
+                fontSize="10"
+                fontWeight="bold"
+                fill="white"
+                textAnchor="middle"
+              >
+                ML
+              </text>
+              <text
+                x="35"
+                y="15"
+                fontFamily="Arial, sans-serif"
+                fontSize="10"
+                fill="#374151"
+              >
+                Maria Lopez
+              </text>
+              <text
+                x="35"
+                y="25"
+                fontFamily="Arial, sans-serif"
+                fontSize="8"
+                fill="#6B7280"
+              >
+                Designer
+              </text>
+            </g>
+
+            <g transform="translate(75, 65)">
+              <rect
+                x="0"
+                y="0"
+                width="100"
+                height="20"
+                rx="10"
+                fill="#FCD34D"
+              />
+              <text
+                x="50"
+                y="13"
+                fontFamily="Arial, sans-serif"
+                fontSize="10"
+                fontWeight="bold"
+                fill="#0369A1"
+                textAnchor="middle"
+              >
+                Connect Now
+              </text>
+            </g>
+          </g>
+
+          {/* Luggage Sharing Feature */}
+          <g transform="translate(50, 120)">
+            <rect
+              width="180"
+              height="80"
+              rx="10"
+              fill="rgba(255,255,255,0.9)"
+            />
             <text
-              x="350"
-              y="267"
+              x="90"
+              y="20"
               fontFamily="Arial, sans-serif"
-              fontSize="16"
+              fontSize="12"
+              fontWeight="bold"
               fill="#0369A1"
               textAnchor="middle"
             >
-              B
+              Luggage Sharing
             </text>
 
-            <circle cx="550" cy="290" r="12" />
+            {/* Suitcase icon */}
+            <g transform="translate(70, 30)">
+              <rect x="0" y="10" width="40" height="25" rx="5" fill="#6B7280" />
+              <rect x="5" y="5" width="30" height="8" rx="2" fill="#374151" />
+              <circle cx="35" cy="40" r="4" fill="#374151" />
+              <circle cx="5" cy="40" r="4" fill="#374151" />
+            </g>
+
             <text
-              x="550"
-              y="297"
+              x="90"
+              y="60"
               fontFamily="Arial, sans-serif"
-              fontSize="16"
-              fill="#0369A1"
+              fontSize="9"
+              fill="#374151"
               textAnchor="middle"
             >
-              C
+              Share space • Save costs
             </text>
           </g>
 
-          {/* Logo */}
-          <g transform="translate(250, 360)">
+          {/* Title */}
+          <g transform="translate(260, 370)">
             <text
               x="0"
               y="30"
               fontFamily="Arial, sans-serif"
-              fontSize="36"
+              fontSize="32"
               fontWeight="bold"
               fill="white"
             >
@@ -430,10 +971,10 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
             </text>
             <text
               x="0"
-              y="60"
+              y="55"
               fontFamily="Arial, sans-serif"
-              fontSize="18"
-              fill="#E5E7EB"
+              fontSize="16"
+              fill="#BAE6FD"
             >
               Travelers Connection Platform
             </text>
@@ -441,14 +982,14 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
 
           {videoUrl && (
             <g>
-              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
-              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+              <circle cx="400" cy="225" r="40" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 210 L385 240 L415 225 Z" fill="white" />
             </g>
           )}
         </svg>
       );
 
-    case "sportsplatform":
+    case "12": // Sports Platform
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -457,19 +998,20 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
         >
           <defs>
             <linearGradient
-              id="sportsGradient"
+              id="sportsGradient12"
               x1="0%"
               y1="0%"
               x2="100%"
               y2="100%"
             >
               <stop offset="0%" stopColor="#059669" />
-              <stop offset="100%" stopColor="#047857" />
+              <stop offset="50%" stopColor="#047857" />
+              <stop offset="100%" stopColor="#065F46" />
             </linearGradient>
           </defs>
 
           {/* Background */}
-          <rect width="800" height="450" fill="url(#sportsGradient)" />
+          <rect width="800" height="450" fill="url(#sportsGradient12)" />
 
           {/* Sports field */}
           <rect
@@ -511,7 +1053,6 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
             stroke="white"
             strokeWidth="3"
           />
-
           {/* Goal areas */}
           <rect
             x="100"
@@ -570,13 +1111,38 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
             />
           </g>
 
+          {/* Basketball */}
+          <g transform="translate(350, 80)">
+            <circle cx="0" cy="0" r="20" fill="#F97316" />
+            <path
+              d="M-20 0 Q0 -10 20 0"
+              stroke="#1F2937"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path
+              d="M-20 0 Q0 10 20 0"
+              stroke="#1F2937"
+              strokeWidth="2"
+              fill="none"
+            />
+            <line
+              x1="0"
+              y1="-20"
+              x2="0"
+              y2="20"
+              stroke="#1F2937"
+              strokeWidth="2"
+            />
+          </g>
+
           {/* Platform cards */}
           <g transform="translate(150, 380)">
             <rect
               width="200"
               height="50"
               rx="10"
-              fill="rgba(255,255,255,0.9)"
+              fill="rgba(255,255,255,0.95)"
             />
             <text
               x="100"
@@ -597,7 +1163,7 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               fill="#047857"
               textAnchor="middle"
             >
-              Venue Booking
+              Venue Booking Platform
             </text>
           </g>
 
@@ -606,7 +1172,7 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               width="200"
               height="50"
               rx="10"
-              fill="rgba(255,255,255,0.9)"
+              fill="rgba(255,255,255,0.95)"
             />
             <text
               x="100"
@@ -627,20 +1193,20 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               fill="#047857"
               textAnchor="middle"
             >
-              Trainer Discovery
+              Trainer Discovery Platform
             </text>
           </g>
 
           {videoUrl && (
             <g>
-              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
-              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+              <circle cx="400" cy="225" r="40" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 210 L385 240 L415 225 Z" fill="white" />
             </g>
           )}
         </svg>
       );
 
-    case "healthrecords":
+    case "13": // Health Records
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -649,35 +1215,60 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
         >
           <defs>
             <linearGradient
-              id="healthGradient"
+              id="healthGradient13"
               x1="0%"
               y1="0%"
               x2="100%"
               y2="100%"
             >
               <stop offset="0%" stopColor="#DC2626" />
-              <stop offset="100%" stopColor="#B91C1C" />
+              <stop offset="50%" stopColor="#B91C1C" />
+              <stop offset="100%" stopColor="#991B1B" />
             </linearGradient>
+            <radialGradient id="crossGradient13" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="100%" stopColor="#F3F4F6" />
+            </radialGradient>
           </defs>
 
           {/* Background */}
-          <rect width="800" height="450" fill="url(#healthGradient)" />
+          <rect width="800" height="450" fill="url(#healthGradient13)" />
 
-          {/* Medical cross */}
-          <g transform="translate(350, 120)">
-            <rect x="35" y="0" width="30" height="100" fill="white" />
-            <rect x="0" y="35" width="100" height="30" fill="white" />
+          {/* Medical Cross */}
+          <g transform="translate(350, 100)">
+            <circle cx="50" cy="50" r="60" fill="rgba(255,255,255,0.1)" />
+            <rect
+              x="35"
+              y="10"
+              width="30"
+              height="80"
+              fill="url(#crossGradient13)"
+              rx="5"
+            />
+            <rect
+              x="15"
+              y="30"
+              width="70"
+              height="30"
+              fill="url(#crossGradient13)"
+              rx="5"
+            />
           </g>
 
-          {/* Health records */}
-          <g transform="translate(500, 150)">
-            <rect width="200" height="140" rx="10" fill="white" />
-            <rect x="10" y="10" width="180" height="20" fill="#EF4444" />
+          {/* Health Records Dashboard */}
+          <g transform="translate(500, 120)">
+            <rect
+              width="250"
+              height="180"
+              rx="12"
+              fill="rgba(255,255,255,0.95)"
+            />
+            <rect width="250" height="35" rx="12" fill="#DC2626" />
             <text
-              x="100"
+              x="125"
               y="25"
               fontFamily="Arial, sans-serif"
-              fontSize="14"
+              fontSize="16"
               fontWeight="bold"
               fill="white"
               textAnchor="middle"
@@ -685,74 +1276,234 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
               Health Records
             </text>
 
+            {/* Patient Info */}
+            <g transform="translate(20, 50)">
+              <circle cx="20" cy="20" r="15" fill="#FEE2E2" />
+              <text
+                x="20"
+                y="25"
+                fontFamily="Arial, sans-serif"
+                fontSize="12"
+                fontWeight="bold"
+                fill="#DC2626"
+                textAnchor="middle"
+              >
+                JS
+              </text>
+              <text
+                x="45"
+                y="18"
+                fontFamily="Arial, sans-serif"
+                fontSize="12"
+                fontWeight="bold"
+                fill="#374151"
+              >
+                John Smith
+              </text>
+              <text
+                x="45"
+                y="30"
+                fontFamily="Arial, sans-serif"
+                fontSize="10"
+                fill="#6B7280"
+              >
+                DOB: 01/15/1985
+              </text>
+            </g>
+
             {/* Record lines */}
-            <line
-              x1="20"
-              y1="50"
-              x2="180"
-              y2="50"
-              stroke="#E5E7EB"
-              strokeWidth="2"
-            />
-            <line
-              x1="20"
-              y1="70"
-              x2="150"
-              y2="70"
-              stroke="#E5E7EB"
-              strokeWidth="2"
-            />
-            <line
-              x1="20"
-              y1="90"
-              x2="170"
-              y2="90"
-              stroke="#E5E7EB"
-              strokeWidth="2"
-            />
-            <line
-              x1="20"
-              y1="110"
-              x2="140"
-              y2="110"
-              stroke="#E5E7EB"
-              strokeWidth="2"
-            />
+            <g transform="translate(20, 80)">
+              <rect x="0" y="0" width="210" height="15" rx="2" fill="#FEE2E2" />
+              <text
+                x="10"
+                y="10"
+                fontFamily="Arial, sans-serif"
+                fontSize="9"
+                fill="#DC2626"
+              >
+                Prescription: Medication ABC - Dr. Williams
+              </text>
+
+              <rect
+                x="0"
+                y="20"
+                width="210"
+                height="15"
+                rx="2"
+                fill="#F3F4F6"
+              />
+              <text
+                x="10"
+                y="30"
+                fontFamily="Arial, sans-serif"
+                fontSize="9"
+                fill="#374151"
+              >
+                Lab Results: Blood Test - Normal Range
+              </text>
+
+              <rect
+                x="0"
+                y="40"
+                width="210"
+                height="15"
+                rx="2"
+                fill="#FEE2E2"
+              />
+              <text
+                x="10"
+                y="50"
+                fontFamily="Arial, sans-serif"
+                fontSize="9"
+                fill="#DC2626"
+              >
+                Appointment: Cardiology - 03/15/2025
+              </text>
+
+              <rect
+                x="0"
+                y="60"
+                width="210"
+                height="15"
+                rx="2"
+                fill="#F3F4F6"
+              />
+              <text
+                x="10"
+                y="70"
+                fontFamily="Arial, sans-serif"
+                fontSize="9"
+                fill="#374151"
+              >
+                Vaccination: COVID-19 Booster - Complete
+              </text>
+
+              <rect
+                x="0"
+                y="80"
+                width="210"
+                height="15"
+                rx="2"
+                fill="#FEE2E2"
+              />
+              <text
+                x="10"
+                y="90"
+                fontFamily="Arial, sans-serif"
+                fontSize="9"
+                fill="#DC2626"
+              >
+                Insurance: Health Plan XYZ - Active
+              </text>
+            </g>
           </g>
 
-          {/* Heart monitor line */}
-          <g transform="translate(100, 300)">
+          {/* Heart Monitor Line */}
+          <g transform="translate(50, 280)">
             <path
-              d="M0 20 L20 20 L30 0 L40 40 L50 0 L60 20 L200 20"
+              d="M0 20 L30 20 L40 0 L50 40 L60 0 L70 20 L100 20 L130 20 L140 0 L150 40 L160 0 L170 20 L200 20"
               stroke="#FCD34D"
               strokeWidth="3"
               fill="none"
             />
           </g>
 
-          {/* Security icons */}
-          <g transform="translate(150, 200)">
+          {/* Security Lock Icon */}
+          <g transform="translate(100, 180)">
+            <rect x="15" y="20" width="40" height="35" rx="8" fill="#FCD34D" />
             <rect
-              x="15"
-              y="0"
-              width="20"
-              height="15"
-              rx="10"
+              x="20"
+              y="10"
+              width="30"
+              height="20"
+              rx="15"
               fill="none"
               stroke="#FCD34D"
-              strokeWidth="3"
+              strokeWidth="4"
             />
-            <rect x="10" y="10" width="30" height="20" rx="5" fill="#FCD34D" />
-            <circle cx="25" cy="20" r="3" fill="white" />
+            <circle cx="35" cy="32" r="4" fill="#DC2626" />
+            <rect x="33" y="35" width="4" height="8" fill="#DC2626" />
           </g>
 
-          {/* Logo */}
-          <g transform="translate(200, 360)">
+          {/* HIPAA Compliance Badge */}
+          <g transform="translate(100, 120)">
+            <rect
+              width="120"
+              height="40"
+              rx="20"
+              fill="rgba(255,255,255,0.15)"
+            />
+            <text
+              x="60"
+              y="18"
+              fontFamily="Arial, sans-serif"
+              fontSize="12"
+              fontWeight="bold"
+              fill="white"
+              textAnchor="middle"
+            >
+              HIPAA
+            </text>
+            <text
+              x="60"
+              y="32"
+              fontFamily="Arial, sans-serif"
+              fontSize="10"
+              fill="#FEE2E2"
+              textAnchor="middle"
+            >
+              Compliant
+            </text>
+          </g>
+
+          {/* Emergency Access */}
+          <g transform="translate(300, 320)">
+            <rect
+              width="200"
+              height="60"
+              rx="10"
+              fill="rgba(255,255,255,0.15)"
+            />
+            <text
+              x="100"
+              y="20"
+              fontFamily="Arial, sans-serif"
+              fontSize="14"
+              fontWeight="bold"
+              fill="white"
+              textAnchor="middle"
+            >
+              Emergency Access
+            </text>
+            <text
+              x="100"
+              y="35"
+              fontFamily="Arial, sans-serif"
+              fontSize="10"
+              fill="#FEE2E2"
+              textAnchor="middle"
+            >
+              Critical health info available 24/7
+            </text>
+            <text
+              x="100"
+              y="50"
+              fontFamily="Arial, sans-serif"
+              fontSize="10"
+              fill="#FEE2E2"
+              textAnchor="middle"
+            >
+              Blood Type: O+ | Allergies: Penicillin
+            </text>
+          </g>
+
+          {/* Title */}
+          <g transform="translate(200, 390)">
             <text
               x="0"
               y="30"
               fontFamily="Arial, sans-serif"
-              fontSize="32"
+              fontSize="28"
               fontWeight="bold"
               fill="white"
             >
@@ -760,9 +1511,9 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
             </text>
             <text
               x="0"
-              y="60"
+              y="55"
               fontFamily="Arial, sans-serif"
-              fontSize="16"
+              fontSize="14"
               fill="#FEE2E2"
             >
               Secure Health Management System
@@ -771,8 +1522,8 @@ const ProjectThumbnail: React.FC<ProjectThumbnailProps> = ({
 
           {videoUrl && (
             <g>
-              <circle cx="400" cy="225" r="50" fill="rgba(0,0,0,0.7)" />
-              <path d="M385 200 L385 250 L425 225 Z" fill="white" />
+              <circle cx="400" cy="225" r="40" fill="rgba(0,0,0,0.7)" />
+              <path d="M385 210 L385 240 L415 225 Z" fill="white" />
             </g>
           )}
         </svg>

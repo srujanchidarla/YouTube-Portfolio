@@ -72,7 +72,7 @@ Future Roadmap:
 
 Project Vision:
 In today's dynamic job market, finding the right opportunity can be challenging. JobFinder aims to transform this process by providing a seamless, intuitive, and intelligent job search experience.`,
-    views: 4782,
+    views: 782,
     createdAt: "2023-11-20T14:45:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 987,
@@ -135,7 +135,7 @@ Future Enhancements:
     description: `PixelPeek is an open-source Chrome extension designed to measure the pixel dimensions of images, videos, and other media elements on any webpage. It offers a lightweight, easy-to-use interface for web developers, designers, and anyone who needs to inspect the size of media content.
 
 The extension provides instant, accurate measurements by simply hovering over elements, making it an essential tool for front-end development and design work.`,
-    views: 1400,
+    views: 400,
     createdAt: "2023-04-05T08:15:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 1245,
@@ -507,7 +507,7 @@ Future Enhancements:
     title: "AgriWise: Revolutionizing Digital Agriculture",
     description:
       "A comprehensive digital agriculture ecosystem for Indian farmers covering crop planning, cultivation guidance, market intelligence, and financial services.",
-    views: 1200,
+    views: 12000,
     createdAt: "2024-12-15T10:30:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 1650,
@@ -522,7 +522,7 @@ Future Enhancements:
     title: "StudyGlobal: International Student Services Platform",
     description:
       "A comprehensive digital platform supporting international students through their entire academic journey abroad.",
-    views: 850,
+    views: 18500,
     createdAt: "2024-11-20T14:45:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 1650,
@@ -558,7 +558,7 @@ Future Enhancements:
     title: "Sports & Fitness Platform: FitConnect + TrainHub",
     description:
       "A dual-platform ecosystem combining FitConnect (sports venue booking) and TrainHub (fitness trainer discovery).",
-    views: 1100,
+    views: 12300,
     createdAt: "2024-09-15T11:20:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 1650,
@@ -573,7 +573,7 @@ Future Enhancements:
     title: "Health Records Management System",
     description:
       "End-to-end health records management system tracking patients from birth through their entire healthcare journey.",
-    views: 750,
+    views: 7750,
     createdAt: "2024-08-25T15:45:00Z",
     channelName: "Srujan Chidarla",
     subscribers: 1650,

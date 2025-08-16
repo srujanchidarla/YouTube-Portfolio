@@ -189,6 +189,18 @@ const VideoPlayerContent: React.FC<VideoPlayerContentProps> = ({
       },
     ];
 
+    if (
+      project.link &&
+      project.link !== "#" &&
+      !project.link.includes("#/channel")
+    ) {
+      baseReferences.push({
+        label: "Live Demo",
+        url: project.link,
+        icon: <LinkIcon className="h-5 w-5 mr-2" />,
+      });
+    }
+
     // Project-specific references
     switch (project.id.toLowerCase()) {
       case "weatherwise":
@@ -261,6 +273,227 @@ const VideoPlayerContent: React.FC<VideoPlayerContentProps> = ({
             icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
           },
         ];
+      case "agriwise":
+        return [
+          ...baseReferences,
+          {
+            label: "Digital Agriculture Resources",
+            url: "https://www.fao.org/digital-agriculture/en/",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Smart Farming Technologies",
+            url: "https://www.agriculture.com/technology/smart-farming-technologies",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "IoT in Agriculture",
+            url: "https://www.ibm.com/topics/iot-agriculture",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "studyglobal":
+        return [
+          ...baseReferences,
+          {
+            label: "International Student Guide",
+            url: "https://www.internationalstudent.com/",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Study Abroad Resources",
+            url: "https://www.studyabroad.com/",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Contentful CMS Documentation",
+            url: "https://www.contentful.com/developers/docs/",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "flightbuddy":
+        return [
+          ...baseReferences,
+          {
+            label: "Flight Data APIs",
+            url: "https://developers.amadeus.com/",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Travel Industry APIs",
+            url: "https://rapidapi.com/collection/travel-apis",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "WebSocket Documentation",
+            url: "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "sportsplatform":
+        return [
+          ...baseReferences,
+          {
+            label: "Sports Venue Management",
+            url: "https://www.sportengland.org/facilities-planning/",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Fitness Industry Technology",
+            url: "https://www.ihrsa.org/improve-your-club/industry-leadership/",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Google Maps Platform",
+            url: "https://developers.google.com/maps/documentation",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "healthrecords":
+        return [
+          ...baseReferences,
+          {
+            label: "HIPAA Compliance Guide",
+            url: "https://www.hhs.gov/hipaa/for-professionals/index.html",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Healthcare Data Security",
+            url: "https://www.healthit.gov/topic/privacy-security-and-hipaa",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Health Information Systems",
+            url: "https://www.who.int/data/data-collection-tools/health-service-data",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      // EXISTING PROJECTS
+      case "weatherwise":
+        return [
+          ...baseReferences,
+          {
+            label: "OpenWeatherMap API",
+            url: "https://openweathermap.org/api",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Leaflet.js Documentation",
+            url: "https://leafletjs.com/",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "jobfinder":
+        return [
+          ...baseReferences,
+          {
+            label: "Adzuna API Documentation",
+            url: "https://developer.adzuna.com/",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "React Router Documentation",
+            url: "https://reactrouter.com/",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "pixelpeek":
+        return [
+          ...baseReferences,
+          {
+            label: "Chrome Extensions API",
+            url: "https://developer.chrome.com/docs/extensions/reference/",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "PixelPeek Website",
+            url: "https://pixelpeek.site",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "truescreenshot":
+        return [
+          ...baseReferences,
+          {
+            label: "VS Code Extension Marketplace",
+            url: "https://marketplace.visualstudio.com/items?itemName=srujanchidarla.truescreenshot",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "VS Code Extension API",
+            url: "https://code.visualstudio.com/api",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "agile-retro":
+        return [
+          ...baseReferences,
+          {
+            label: "Azure DevOps API",
+            url: "https://docs.microsoft.com/en-us/rest/api/azure/devops/",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Spring Boot Documentation",
+            url: "https://spring.io/projects/spring-boot",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "ecommerce":
+        return [
+          ...baseReferences,
+          {
+            label: "MERN Stack Guide",
+            url: "https://www.mongodb.com/mern-stack",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "PayPal Developer Documentation",
+            url: "https://developer.paypal.com/docs/",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "make-receipt":
+        return [
+          ...baseReferences,
+          {
+            label: "React Native Documentation",
+            url: "https://reactnative.dev/docs/getting-started",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "Firebase Documentation",
+            url: "https://firebase.google.com/docs",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
+      case "todo":
+        return [
+          ...baseReferences,
+          {
+            label: "Web APIs Documentation",
+            url: "https://developer.mozilla.org/en-US/docs/Web/API",
+            icon: <DocumentTextIcon className="h-5 w-5 mr-2" />,
+          },
+          {
+            label: "LocalStorage API",
+            url: "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+            icon: <LinkIcon className="h-5 w-5 mr-2" />,
+          },
+        ];
+
       default:
         return baseReferences;
     }
