@@ -43,7 +43,7 @@ const experiences = [
   {
     company: "WalletGyde",
     role: "Full-Stack Web Developer",
-    period: "Dec 2024 - Present",
+    period: "Dec 2024 - May 2025",
     location: "Denver, USA (Remote)",
     description: [
       "Developing landing pages and main beta website using Next.js, Node.js, and Supabase for a responsive and scalable platform.",

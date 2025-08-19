@@ -9,37 +9,42 @@ import {
 } from "@heroicons/react/24/outline";
 
 const LocalGuideStats = () => {
-  // Google Local Guide stats from screenshots
+  // Google Local Guide stats from updated screenshots
   const localGuideStats = {
     level: 8,
-    totalPoints: 31038,
+    totalPoints: 37345,
     neededPoints: 50000,
     contributions: {
-      total: 5444,
-      reviews: 276,
-      ratings: 51,
-      photos: 3941,
-      videos: 157,
+      total: 7070,
+      reviews: 348,
+      ratings: 52,
+      photos: 4832,
+      videos: 194,
       captions: 1,
-      answers: 781,
-      edits: 75,
+      answers: 1385,
+      edits: 94,
       reportedIncorrect: 0,
-      placesAdded: 154,
+      placesAdded: 155,
       roadsAdded: 0,
       factsChecked: 0,
-      qAndA: 8,
+      qAndA: 9,
     },
     photoStats: {
-      totalPhotos: 4109,
-      totalReactions: 760,
-      totalViews: 16615155,
+      totalPhotos: 5037,
+      totalReactions: 861,
+      totalViews: 20516450,
     },
     socialStats: {
-      followers: 242,
-      following: 4,
+      followers: 265,
+      following: 2,
     },
-    badges: ["Explorer", "Sanchari"],
-    interests: ["Hyderabad", "Biryani", "Family Restaurants"],
+    badges: [
+      "Master Photographer",
+      "Master Trailblazer",
+      "Expert Fact Finder",
+      "Expert Reviewer",
+    ],
+    interests: ["Hyderabad", "Biryani", "Indian Restaurant"],
   };
 
   // Calculate progress percentage
@@ -47,7 +52,7 @@ const LocalGuideStats = () => {
     (localGuideStats.totalPoints / localGuideStats.neededPoints) * 100;
 
   return (
-    <div className="mt-12   ">
+    <div className="mt-12">
       <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
         <MapIcon className="h-6 w-6 mr-2 text-gray-700 dark:text-gray-300" />
         Google Local Guide Stats
@@ -69,11 +74,11 @@ const LocalGuideStats = () => {
                     Level {localGuideStats.level}
                   </span>
                   <span className="text-gray-700 dark:text-gray-300 text-sm">
-                    {localGuideStats.totalPoints} points
+                    {localGuideStats.totalPoints.toLocaleString()} points
                   </span>
                 </div>
                 <span className="text-gray-500 dark:text-gray-400 text-sm">
-                  {localGuideStats.neededPoints} for next level
+                  {localGuideStats.neededPoints.toLocaleString()} for next level
                 </span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
@@ -87,7 +92,7 @@ const LocalGuideStats = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-gray-50 dark:bg-zinc-800 rounded-lg p-4 flex flex-col items-center justify-center">
                 <p className="text-3xl font-bold text-gray-900 dark:text-white">
-                  {localGuideStats.contributions.total}
+                  {localGuideStats.contributions.total.toLocaleString()}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   Total Contributions
@@ -216,7 +221,7 @@ const LocalGuideStats = () => {
                       Photos
                     </span>
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {localGuideStats.contributions.photos}
+                      {localGuideStats.contributions.photos.toLocaleString()}
                     </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
@@ -232,7 +237,7 @@ const LocalGuideStats = () => {
                       Answers
                     </span>
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {localGuideStats.contributions.answers}
+                      {localGuideStats.contributions.answers.toLocaleString()}
                     </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
@@ -248,7 +253,7 @@ const LocalGuideStats = () => {
                       Reviews
                     </span>
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {localGuideStats.contributions.reviews}
+                      {localGuideStats.contributions.reviews.toLocaleString()}
                     </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">

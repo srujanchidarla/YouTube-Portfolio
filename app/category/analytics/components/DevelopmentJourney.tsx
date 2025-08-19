@@ -15,17 +15,17 @@ const DevelopmentJourney = () => {
             <div className="absolute w-6 h-6 bg-blue-500 rounded-full -left-3 border-4 border-white dark:border-zinc-900"></div>
             <div className="flex items-center">
               <h3 className="flex items-center text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                Full Stack Web Developer at WalletGyde
+                Full Stack Web Developer Intern at WalletGyde
                 <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ml-3">
-                  Current
+                  Recent
                 </span>
               </h3>
             </div>
             <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-              2023 - Present
+              Dec 2024 - May 2025
             </time>
             <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-              Developing financial management application with React, Node.js,
+              Developed financial management application with React, Node.js,
               and MongoDB, focusing on security and scalability.
             </p>
           </div>
