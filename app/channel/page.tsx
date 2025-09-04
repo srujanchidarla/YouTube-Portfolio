@@ -82,7 +82,7 @@ const education = [
   {
     institution: "University of Fairfax",
     degree: "Master's in Computer Science",
-    period: "Aug 2024 - Dec 2025",
+    period: "Aug 2024 - May 2026",
     gpa: "GPA: 4.0/4.0",
     description:
       "Focusing on cloud computing and artificial intelligence, this program enhances my ability to develop innovative solutions for real-world challenges.",
